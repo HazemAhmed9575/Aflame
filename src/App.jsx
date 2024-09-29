@@ -5,6 +5,7 @@ import Move from './padges/Move'
 import Series from './padges/Series'
 import CpntactUs from './padges/CpntactUs'
 import { Route, Routes } from 'react-router-dom'
+import Footer from './compont/footer'
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/move" element={<Move/> }/>
           <Route path="/series" element={<Series/> }/>
-          <Route path="/cpntacUS" element={<CpntactUs/> }/>
+          <Route path="/cpntacus" element={<CpntactUs/> }/>
         </Routes>
-
+<Footer/>
 
     </div>
   )
