@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
 <NavBar/>
-
+<h1>hhhh</h1>
 <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/move" element={<Move/> }/>
