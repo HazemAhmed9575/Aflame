@@ -5,7 +5,7 @@ import Move from './padges/Move'
 import Series from './padges/Series'
 import CpntactUs from './padges/CpntactUs'
 import { Route, Routes } from 'react-router-dom'
-import Footer from './compont/footer'
+import Footer from './compont/Footer'
 
 function App() {
   return (
