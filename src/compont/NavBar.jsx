@@ -3,7 +3,6 @@ import {
   Navbar,
   Collapse,
   Typography,
-  Button,
   IconButton,
   Input,
 } from "@material-tailwind/react";
@@ -12,6 +11,8 @@ import { Link } from "react-router-dom";
 
 function NavBar() {
   const [openNav, setOpenNav] = useState(false);
+  const [search,setSearch]=useState("")
+  const [searchpath,setSearchpath]=useState("serachSeries")
 
   useEffect(() => {
     window.addEventListener(
@@ -25,32 +26,32 @@ function NavBar() {
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-base active:text-white hover:text-gray-400">
-        <Link to={"/"} className="flex items-center">
+        className="p-1 font-medium text-base  hover:text-gray-400">
+        <Link to={"/"} className="flex focus:text-white items-center">
           Home
         </Link>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-base active:text-white hover:text-gray-400 ">
-        <Link to={"/move"} className="flex items-center">
+        className="p-1 font-medium text-base  hover:text-gray-400 ">
+        <Link to={"/move"} className="flex items-center focus:text-white">
           Movies
         </Link>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-base active:text-white hover:text-gray-400 ">
-        <Link to={"/series"} className="flex items-center ">
+        className="p-1 font-medium text-base  hover:text-gray-400 ">
+        <Link to={"/series"} className="flex focus:text-white items-center ">
           Series
         </Link>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-base hover:text-gray-400 ">
-        <Link to={"/cpntactUs"} className="flex items-center">
+        className="p-1 font-medium text-base  hover:text-gray-400 ">
+        <Link to={"/cpntacus"} className="flex focus:text-white items-center">
           Cpntact Us
         </Link>
       </Typography>
@@ -58,7 +59,7 @@ function NavBar() {
   );
   // end  navList Home, Movies , Series , Cpntact Us
   return (
-    <Navbar className=" max-w-full bg-[#212529] rounded-none border-0 p-2   ">
+    <Navbar className=" max-w-full bg-[#212529] rounded-none border-0 p-2 sticky top-0 z-10  ">
       <div className=" w-full flex flex-wrap items-center justify-around font-mono ">
         {/* navList and  Redux Movies */}
         <div className=" flex gap-x-5">
@@ -77,15 +78,17 @@ function NavBar() {
           <div className="relative flex w-full gap-2 md:w-max">
             <Input
               type="search"
+              value={search}
+              onChange={(e)=>setSearch(e.target.value)}
               placeholder="Search with movies"
               className="placeholder:text-black placeholder:after:text-black bg-white"
             />
           </div>
-          <button className="py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
+          <button className={`py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white ${search == "" && "pointer-events-none"}`}>
             Search
           </button>
-          <button className="py-1.5 px-3 text-base   border-2 rounded-md text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]">
-            serachSeries
+          <button onClick={()=>{searchpath == "serachSeries" ?setSearchpath("serachMovies"):setSearchpath("serachSeries")}} className={`py-1.5 px-3 text-base   border-2 rounded-md ${searchpath == "serachSeries" ? "text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]":"text-blue-700 border-2 rounded-md border-blue-700 hover:bg-blue-700 hover:text-white"}`}>
+            {searchpath}
           </button>
           <button className="py-1.5 px-3 text-base font-bold text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black ">
             Login
