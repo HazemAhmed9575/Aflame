@@ -5,13 +5,13 @@ import Move from './padges/Move'
 import Series from './padges/Series'
 import CpntactUs from './padges/CpntactUs'
 import { Route, Routes } from 'react-router-dom'
-import Footer from './compont/footer'
+import Footer from './compont/Footer'
 
 function App() {
   return (
     <div>
 <NavBar/>
-
+<h1>hhhh</h1>
 <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/move" element={<Move/> }/>
