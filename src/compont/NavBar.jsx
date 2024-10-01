@@ -7,12 +7,12 @@ import {
   Input,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const [openNav, setOpenNav] = useState(false);
-  const [search,setSearch]=useState("")
-  const [searchpath,setSearchpath]=useState("serachSeries")
+  const [search, setSearch] = useState("");
+  const [searchpath, setSearchpath] = useState("serachSeries");
 
   useEffect(() => {
     window.addEventListener(
@@ -22,40 +22,36 @@ function NavBar() {
   }, []);
   // navList Home, Movies , Series , Cpntact Us
   const navList = (
-    <ul className="mb-4 mt-2  flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <div className="mb-4 mt-2  flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
-        as="li"
+        as={NavLink}
+        to={"/"}
         variant="small"
         className="p-1 font-medium text-base  hover:text-gray-400">
-        <Link to={"/"} className="flex focus:text-white items-center">
-          Home
-        </Link>
+        Home
       </Typography>
       <Typography
-        as="li"
+        as={NavLink}
+        to={"/move"}
         variant="small"
         className="p-1 font-medium text-base  hover:text-gray-400 ">
-        <Link to={"/move"} className="flex items-center focus:text-white">
-          Movies
-        </Link>
+        Movies
       </Typography>
       <Typography
-        as="li"
+        as={NavLink}
+        to={"/series"}
         variant="small"
         className="p-1 font-medium text-base  hover:text-gray-400 ">
-        <Link to={"/series"} className="flex focus:text-white items-center ">
-          Series
-        </Link>
+        Series
       </Typography>
       <Typography
-        as="li"
+        as={NavLink}
+        to={"/cpntacus"}
         variant="small"
         className="p-1 font-medium text-base  hover:text-gray-400 ">
-        <Link to={"/cpntacus"} className="flex focus:text-white items-center">
-          Cpntact Us
-        </Link>
+        Cpntact Us
       </Typography>
-    </ul>
+    </div>
   );
   // end  navList Home, Movies , Series , Cpntact Us
   return (
@@ -79,15 +75,28 @@ function NavBar() {
             <Input
               type="search"
               value={search}
-              onChange={(e)=>setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search with movies"
               className="placeholder:text-black placeholder:after:text-black bg-white"
             />
           </div>
-          <button className={`py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white ${search == "" && "pointer-events-none"}`}>
+          <button
+            className={`py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white ${
+              search == "" && "pointer-events-none"
+            }`}>
             Search
           </button>
-          <button onClick={()=>{searchpath == "serachSeries" ?setSearchpath("serachMovies"):setSearchpath("serachSeries")}} className={`py-1.5 px-3 text-base   border-2 rounded-md ${searchpath == "serachSeries" ? "text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]":"text-blue-700 border-2 rounded-md border-blue-700 hover:bg-blue-700 hover:text-white"}`}>
+          <button
+            onClick={() => {
+              searchpath == "serachSeries"
+                ? setSearchpath("serachMovies")
+                : setSearchpath("serachSeries");
+            }}
+            className={`py-1.5 px-3 text-base   border-2 rounded-md ${
+              searchpath == "serachSeries"
+                ? "text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]"
+                : "text-blue-700 border-2 rounded-md border-blue-700 hover:bg-blue-700 hover:text-white"
+            }`}>
             {searchpath}
           </button>
           <button className="py-1.5 px-3 text-base font-bold text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black ">
@@ -101,9 +110,9 @@ function NavBar() {
           className="lg:hidden text-gray-500  border-2 border-gray-700  "
           onClick={() => setOpenNav(!openNav)}>
           {openNav ? (
-            <XMarkIcon className="h-6 w-6"  />
+            <XMarkIcon className="h-6 w-6" />
           ) : (
-            <Bars3Icon className="h-6 w-6"  />
+            <Bars3Icon className="h-6 w-6" />
           )}
         </IconButton>
         {/* end Icon resbon */}
@@ -115,21 +124,18 @@ function NavBar() {
             <div className=" w-full gap-2 md:w-max sm:w-1/2">
               <Input
                 type="search"
-                 placeholder="Search with movies"
-                className=" placeholder:text-black   bg-white"
-            
-              />
-             
+                placeholder="Search with movies"
+                className=" placeholder:text-black   bg-white" />
             </div>
             <button className="py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
-            Search
-          </button>
-          <button className="py-1.5 px-3 text-base   border-2 rounded-md text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]">
-            serachSeries
-          </button>
-          <button className="py-1.5 px-3 text-base font-bold text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black ">
-            Login
-          </button>
+              Search
+            </button>
+            <button className="py-1.5 px-3 text-base   border-2 rounded-md text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]">
+              serachSeries
+            </button>
+            <button className="py-1.5 px-3 text-base font-bold text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black ">
+              Login
+            </button>
           </div>
         </div>
       </Collapse>
