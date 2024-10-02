@@ -13,6 +13,7 @@ const initialState = {
 
 export const sendContact = createAsyncThunk(
   "/sendContact",
+
   async (_, { getState, dispatch, rejectWithValue }) => {
     const { email, subject, message } = getState().contact; // Get current state values
     // Validation
@@ -36,33 +37,6 @@ export const sendContact = createAsyncThunk(
       dispatch(setErrmessage(false));
     }
 
-    try {
-      const data = {
-        service_id: "service_19kvycs",
-        template_id: "template_p5snoux",
-        user_id: "tR8MG5xt9Jm2tcqrS",
-        template_params: {
-          to_name: "aflame",
-          from_Email: email, // Get the email from the state
-          from_subject: subject, // Get the subject from the state
-          message, // Get the message from the state
-        },
-      };
-
-      // Send the request to the API
-      const response = await axios.post(
-        "https://api.emailjs.com/api/v1.0/email/send",
-        data
-      );
-      console.log(response.data);
-
-      // Clear form fields on success
-      dispatch(setEmail(""));
-      dispatch(setSubject(""));
-      dispatch(setMessage(""));
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
   }
 );
 
@@ -79,6 +53,7 @@ const contactSlice = createSlice({
     setMessage: (state, { payload }) => {
       state.message = payload;
     },
+
     setErrEmail: (state, { payload }) => {
       state.errEmail = payload;
     },
@@ -87,6 +62,7 @@ const contactSlice = createSlice({
     },
     setErrmessage: (state, { payload }) => {
       state.errmessage = payload;
+
     },
   },
   extraReducers: (builder) => {
