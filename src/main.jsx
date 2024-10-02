@@ -8,11 +8,13 @@ import { Provider } from "react-redux";
 import store from "./redex/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-<Provider store={store}>
-  <BrowserRouter>
+
+  <Provider store={store}>
+    <BrowserRouter>
       <ThemeProvider>
         <App />
       </ThemeProvider>
-  </BrowserRouter>
-</Provider>
+    </BrowserRouter>
+  </Provider>
+
 );

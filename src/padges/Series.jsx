@@ -1,8 +1,22 @@
 import React from 'react'
+import Loding from '../compont/Loding'
 
 function Series() {
+  const { loding } = useSelector(
+    (state) => state.movePhotoReducer
+  );
+
+
+
+
+  
   return (
-    <div>Series</div>
+    <div>
+      {loding && <Loding />}
+
+
+
+    </div>
   )
 }
 
