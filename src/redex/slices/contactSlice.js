@@ -5,7 +5,7 @@ const initialState = {
   email: "",
   subject: "",
   message: "",
-  loding: false,
+  loading: false, // Fixed typo
   errEmail: false,
   errsubject: false,
   errmessage: false,
@@ -13,107 +13,29 @@ const initialState = {
 
 export const sendContact = createAsyncThunk(
   "/sendContact",
-  async (x, thunkAPI) => {
 
-// try{
-//   const legalEm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//   if (initialState.email == "" || !legalEm.test(initialState.email)) {
-//     console.log(initialState.errEmail);
-//     initialState.errEmail = true;
-
-//     console.log(initialState.errEmail);
-//   } else if (initialState.subject == "") {
-//     initialState.errEmail = false;
-//     initialState.errsubject = true;
-//   } else if (initialState.message == "") {
-//     initialState.errEmail = false;
-//     initialState.errsubject = false;
-//     initialState.errmessage = true;
-//   } else {
-//     initialState.errEmail = false;
-//     initialState.errsubject = false;
-//     initialState.errmessage = false;
-//     const data = {
-//       service_id: "service_0z22nzp",
-//       template_id: "template_qkh5fsj",
-//       user_id: "HtLpd-4BjARfGKd7a",
-//       template_params: {
-//         to_name: "aflame",
-//         frmo_email: initialState.email,
-//         frmo_subject: initialState.subject,
-//         message: initialState.message,
-//       },
-//     };
-//     axios({
-//       method: "post",
-//       url: "https://api.emailjs.com/api/v1.0/email/send",
-//       data,
-//     }).then((res) => {
-//       console.log(res.data);
-//       initialState.email = "";
-//       initialState.subject = "";
-//       initialState.message = "";
-//     });
-//   }
-// }catch(e){
-//   thunkAPI.rejectWithValue(e)
-// }
-
-
-
-
-
-    
-
-    try {
-      const data = {
-        service_id: "service_0z22nzp",
-        template_id: "template_qkh5fsj",
-        user_id: "HtLpd-4BjARfGKd7a",
-        template_params: {
-          to_name: "aflame",
-          frmo_email: initialState.email,
-          frmo_subject: initialState.subject,
-          message: initialState.message,
-        },
-      };
-      const res = await axios.post(
-        "https://api.emailjs.com/api/v1.0/email/send",
-        data
-      );
-      console.log(res.data);
-      initialState.email = "";
-      initialState.subject = "";
-      initialState.message = "";
-    } catch (e) {
-      thunkAPI.rejectWithValue(e);
+  async (_, { getState, dispatch, rejectWithValue }) => {
+    const { email, subject, message } = getState().contact; // Get current state values
+    // Validation
+    if (!email.includes("@")) {
+      dispatch(setErrEmail(true));
+      return rejectWithValue("Invalid email address");
+    } else {
+      dispatch(setErrEmail(false));
+    }
+    if (subject.trim() === "") {
+      dispatch(setErrsubject(true));
+      return rejectWithValue("Subject cannot be empty");
+    } else {
+      dispatch(setErrsubject(false));
     }
 
-
-    //  try {
-    //   //   const data = {
-    //   //     service_id: "service_0z22nzp",
-    //   //     template_id: "template_qkh5fsj",
-    //   //     user_id: "HtLpd-4BjARfGKd7a",
-    //   //     template_params: {
-    //   //       to_name: "aflame",
-    //   //       frmo_email: initialState.email,
-    //   //       frmo_subject: initialState.subject,
-    //   //       message: initialState.message,
-    //   //     },
-    //   //   };
-    //   //   const res = await axios.post(
-    //   //     "https://api.emailjs.com/api/v1.0/email/send",
-    //   //     data
-    //   //   );
-    //   //   console.log(res.data);
-    //   //   initialState.email = "";
-    //   //   initialState.subject = "";
-    //   //   initialState.message = "";
-    //   // } catch (e) {
-    //   //   thunkAPI.rejectWithValue(e);
-    //   // }
-
+    if (message.trim() === "") {
+      dispatch(setErrmessage(true));
+      return rejectWithValue("Message cannot be empty");
+    } else {
+      dispatch(setErrmessage(false));
+    }
 
   }
 );
@@ -131,65 +53,41 @@ const contactSlice = createSlice({
     setMessage: (state, { payload }) => {
       state.message = payload;
     },
-    sendMessage: (state) => {
-      const legalEm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      if (state.email == "" || !legalEm.test(state.email)) {
-        state.errEmail = true;
-      } else if (state.subject == "") {
-        state.errEmail = false;
-        state.errsubject = true;
-      } else if (state.message == "") {
-        state.errEmail = false;
-        state.errsubject = false;
-        state.errmessage = true;
-      } else {
-        state.errEmail = false;
-        state.errsubject = false;
-        state.errmessage = false;
 
-        sendContact()
+    setErrEmail: (state, { payload }) => {
+      state.errEmail = payload;
+    },
+    setErrsubject: (state, { payload }) => {
+      state.errsubject = payload;
+    },
+    setErrmessage: (state, { payload }) => {
+      state.errmessage = payload;
 
-
-
-
-
-        // const data = {
-        //   service_id: "service_0z22nzp",
-        //   template_id: "template_qkh5fsj",
-        //   user_id: "HtLpd-4BjARfGKd7a",
-        //   template_params: {
-        //     to_name: "aflame",
-        //     frmo_email: state.email,
-        //     frmo_subject: state.subject,
-        //     message: state.message,
-        //   },
-        // };
-        // axios({
-        //   method: "post",
-        //   url: "https://api.emailjs.com/api/v1.0/email/send",
-        //   data,
-        // }).then((res) => {
-        //   console.log(res.data);
-        //   state.email = "";
-        //   state.subject = "";
-        //   state.message = "";
-        // });
-      }
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(sendContact.pending, (state) => {
-      console.log("pending"), (state.loding = true);
-    });
-    builder.addCase(sendContact.fulfilled, (state) => {
-      console.log("fulfilled"), (state.loding = false);
-    });
-    builder.addCase(sendContact.rejected, () => {
-      console.log("rejected");
-    });
+    builder
+      .addCase(sendContact.pending, (state) => {
+        console.log("pending");
+        state.loading = true;
+      })
+      .addCase(sendContact.fulfilled, (state) => {
+        console.log("fulfilled");
+        state.loading = false;
+      })
+      .addCase(sendContact.rejected, (state, action) => {
+        console.log("rejected:", action.payload);
+        state.loading = false;
+      });
   },
 });
 
 export const contact = contactSlice.reducer;
-export const { setEmail, setSubject, setMessage, sendMessage } =
-  contactSlice.actions;
+export const {
+  setEmail,
+  setSubject,
+  setMessage,
+  setErrEmail,
+  setErrsubject,
+  setErrmessage,
+} = contactSlice.actions;
