@@ -54,7 +54,6 @@ function CpntactUs() {
             className="bg-[#212529] text-[#0dcaf0] border-[#0dcaf0] border-2 rounded-md p-2 focus:outline-none focus:shadow-[0_0_0_0.25rem_rgba(13,110,253,0.25)]"
           />
         </div>
-<h1>mostafa</h1>
         <div className="flex flex-col gap-2">
           <label className={`font-bold text-lg ${errmessage && "text-red-600"}`}>
             {errmessage ? "Invalid Message" : "Your Message"}
