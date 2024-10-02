@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./redex/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+
   <Provider store={store}>
     <BrowserRouter>
       <ThemeProvider>
@@ -15,4 +16,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </ThemeProvider>
     </BrowserRouter>
   </Provider>
+
 );
