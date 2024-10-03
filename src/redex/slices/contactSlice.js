@@ -5,7 +5,7 @@ const initialState = {
   email: "",
   subject: "",
   message: "",
-  loading: false, // Fixed typo
+  loading: false,
   errEmail: false,
   errsubject: false,
   errmessage: false,
@@ -15,10 +15,12 @@ export const sendContact = createAsyncThunk(
   "/sendContact",
 
   async (_, { getState, dispatch, rejectWithValue }) => {
+
     const { email, subject, message } = getState().contact; // Get current state values
     // Validation
     const legalEm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!legalEm.test(email)) {
+
       dispatch(setErrEmail(true));
       return rejectWithValue("Invalid email address");
     } else {
@@ -44,9 +46,9 @@ export const sendContact = createAsyncThunk(
         user_id: "tR8MG5xt9Jm2tcqrS",
         template_params: {
           to_name: "aflame",
-          from_Email: email, // Get the email from the form input
-          from_subject: subject, // Get the subject from the form input
-          message, // Get the message from the form input
+          from_Email: email,
+          from_subject: subject,
+          message,
         },
       };
 
@@ -57,7 +59,6 @@ export const sendContact = createAsyncThunk(
       );
       console.log(response.data);
 
-      // Clear form fields on success
       dispatch(setEmail(""));
       dispatch(setSubject(""));
       dispatch(setMessage(""));
