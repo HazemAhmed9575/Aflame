@@ -9,10 +9,11 @@ import { swiperMoveData } from "../../redex/slices/homeSlices/movePhotoSlice"; /
 import "../../index.css"; // Include your custom CSS file
 import Loding from "../Loding";
 import Erorr from "../Erorr";
+import { useNavigate } from "react-router-dom";
 
 const MoveSweper = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // Select the photos and status from Redux state
   const { photosSweper, error, loding } = useSelector(
     (state) => state.movePhotoReducer
@@ -22,10 +23,9 @@ const MoveSweper = () => {
   useEffect(() => {
     dispatch(swiperMoveData());
   }, [dispatch]);
-  if(error==true){
-    return  <Erorr/>
+  if (error == true) {
+    return <Erorr />;
   }
-
   return (
     <div className="swiper-container flex justify-center items-center">
       {loding && <Loding />}
@@ -54,11 +54,12 @@ const MoveSweper = () => {
             slidesPerView: 4, // Show 4 slides for very large screens
             spaceBetween: 30, // Space between slides
           },
-        }}
-      >
+        }}>
         {photosSweper.map((photo) => (
           <SwiperSlide key={photo.id}>
-            <div className="slide-content">
+            <div
+              className="slide-content"
+              onClick={() => navigate(`/movie/${photo.id}/${photo.title}`)}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${photo.poster_path}`}
                 alt={photo.title}

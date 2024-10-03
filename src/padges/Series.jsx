@@ -6,13 +6,14 @@ import Erorr from '../compont/Erorr';
 import ReactStars from 'react-stars';
 import { setPagin } from '../redex/slices/moviesSlice';
 import Pagination from '../compont/Pagination';
+import { useNavigate } from 'react-router-dom';
 
 function Series() {
   const { loding,seriestv,error,padges } = useSelector(
     (state) => state.series
   );
 const dispatch =useDispatch()
-
+const navigate = useNavigate()
 
 
 useEffect(()=>{
@@ -61,7 +62,7 @@ if (error) {
           </div>
         </div>
         <div className="px-6 py-4 text-center">
-          <button className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+          <button onClick={()=>navigate(`/tv/${data.id}/${data.name}`)} className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
             DETAILS
           </button>
         </div>

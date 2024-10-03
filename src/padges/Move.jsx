@@ -5,11 +5,12 @@ import { getMoveData, setPagin } from "../redex/slices/moviesSlice";
 import ReactStars from "react-stars";
 import Loding from "../compont/Loding";
 import Erorr from "../compont/Erorr";
+import { useNavigate } from "react-router-dom";
 
 function Move() {
   const { pageNumber, moveData, loading, error } = useSelector((state) => state.moves);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   // Fetch movie data when component mounts or when pageNumber changes
   useEffect(() => {
     dispatch(getMoveData());
@@ -101,7 +102,7 @@ function Move() {
                 </div>
               </div>
               <div className="px-6 py-4 text-center">
-                <button className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                <button onClick={()=>navigate(`/movie/${move.id}/${move.title}`)} className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                   DETAILS
                 </button>
               </div>

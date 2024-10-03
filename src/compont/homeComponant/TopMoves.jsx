@@ -4,11 +4,12 @@ import { getTopMoveData } from "../../redex/slices/homeSlices/topMove";
 import ReactStars from "react-stars"; // Import react-stars component
 import Loding from "../Loding";
 import Erorr from './../Erorr';
+import { useNavigate } from "react-router-dom";
 
 const TopMoves = () => {
   const dispatch = useDispatch();
   const { movesData, loding, erorr } = useSelector((state) => state.moveData);
-  
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getTopMoveData());
   }, [dispatch]);
@@ -39,7 +40,7 @@ if(erorr){
             </div>
           </div>
           <div className="px-6 py-4 text-center">
-            <button className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            <button onClick={()=>navigate(`/movie/${move.id}/${move.title}`)} className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
               DETAILS
             </button>
           </div>

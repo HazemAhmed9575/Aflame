@@ -6,6 +6,7 @@ import Series from './padges/Series'
 import ContactUs from './padges/ContactUs'
 import { Route, Routes } from 'react-router-dom'
 import Footer from './compont/Footer'
+import Details from './padges/Details'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/move" element={<Move/> }/>
           <Route path="/series" element={<Series/> }/>
           <Route path="/contacus" element={<ContactUs/> }/>
+          <Route path="/:Subject/:id/:name" element={<Details/> }/>
         </Routes>
 <Footer/>
 
