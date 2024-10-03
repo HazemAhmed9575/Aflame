@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Pagination from "../compont/Pagination";
 import { useSelector, useDispatch } from "react-redux";
-import { getMoveData } from "../redex/slices/moviesSlice";
+import { getMoveData, setPagin } from "../redex/slices/moviesSlice";
 import ReactStars from "react-stars";
 import Loding from "../compont/Loding";
 import Erorr from "../compont/Erorr";
@@ -13,6 +13,7 @@ function Move() {
   // Fetch movie data when component mounts or when pageNumber changes
   useEffect(() => {
     dispatch(getMoveData());
+    dispatch(setPagin(true))
   }, [dispatch, pageNumber]);
   if(error){
     return <Erorr/>

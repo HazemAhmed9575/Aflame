@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendContact, setEmail, setMessage, setSubject } from "../redex/slices/contactSlice";
 
 
-function CpntactUs() {
+function ContactUs() {
   const {
     email,
     subject,
@@ -82,4 +82,4 @@ function CpntactUs() {
   );
 }
 
-export default CpntactUs;
+export default ContactUs;

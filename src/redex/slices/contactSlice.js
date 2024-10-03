@@ -15,8 +15,12 @@ export const sendContact = createAsyncThunk(
   "/sendContact",
 
   async (_, { getState, dispatch, rejectWithValue }) => {
-    const { email, subject, message } = getState().contact;
-    if (!email.includes("@")) {
+
+    const { email, subject, message } = getState().contact; // Get current state values
+    // Validation
+    const legalEm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!legalEm.test(email)) {
+
       dispatch(setErrEmail(true));
       return rejectWithValue("Invalid email address");
     } else {

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 // Async Thunk to fetch movie data
 export const getMoveData = createAsyncThunk("/getMoveData", async (_, { getState, rejectWithValue }) => {
   try {
@@ -27,12 +28,19 @@ const initialState = {
   moveData: [],
   loading: false, // To track loading state
   error: null, // To store error messages
+  Pagin:true
 };
 
 const movesData = createSlice({
   name: "movesData",
   initialState,
   reducers: {
+
+setPagin:(state,{payload})=>{
+  state.Pagin = payload
+},
+
+
     incremintPage: (state) => {
       if (state.pageNumber < 500) {
         state.pageNumber += 1;
@@ -67,5 +75,5 @@ const movesData = createSlice({
   },
 });
 
-export const { incremintPage, decremintPage, toMax, toMini } = movesData.actions;
+export const { incremintPage, decremintPage, toMax, toMini,setPagin } = movesData.actions;
 export const moves = movesData.reducer;

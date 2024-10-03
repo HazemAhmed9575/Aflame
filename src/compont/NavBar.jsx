@@ -46,10 +46,10 @@ function NavBar() {
       </Typography>
       <Typography
         as={NavLink}
-        to={"/cpntacus"}
+        to={"/contacus"}
         variant="small"
         className="p-1 font-medium text-base  hover:text-gray-400 ">
-        Cpntact Us
+        Contact Us
       </Typography>
     </div>
   );
