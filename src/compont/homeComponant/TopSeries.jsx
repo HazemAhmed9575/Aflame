@@ -4,12 +4,14 @@ import ReactStars from "react-stars"; // Import react-stars component
 import { getTopSeriesData } from "../../redex/slices/homeSlices/topSeries";
 import Erorr from "../Erorr";
 import Loding from "../Loding";
+import { useNavigate } from "react-router-dom";
 
 const TopSeries = () => {
   const dispatch = useDispatch();
   const { seriesData, loding, erorr } = useSelector(
     (state) => state.seriesData
   );
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getTopSeriesData());
   }, [dispatch]);
@@ -17,6 +19,7 @@ const TopSeries = () => {
   if (erorr) {
     return <Erorr />;
   }
+ 
   return (
     <div className="flex flex-wrap justify-center gap-6">
       {loding && <Loding />}
@@ -47,7 +50,7 @@ const TopSeries = () => {
             </div>
           </div>
           <div className="px-6 py-4 text-center">
-            <button className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            <button onClick={()=>navigate(`/tv/${series.id}/${series.name}`)} className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
               DETAILS
             </button>
           </div>

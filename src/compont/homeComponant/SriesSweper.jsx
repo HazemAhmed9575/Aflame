@@ -8,11 +8,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import { swiperserisData } from "../../redex/slices/homeSlices/seriesPhotoSlice";
 import Loding from "./../Loding";
-import Erorr from './../Erorr';
+import Erorr from "./../Erorr";
+import { useNavigate } from "react-router-dom";
 
 const SriesSweper = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // Select the photos and status from Redux state
   const { photosSweper, loding, error } = useSelector(
     (state) => state.seriesPhotoReducer
@@ -22,9 +23,9 @@ const SriesSweper = () => {
   useEffect(() => {
     dispatch(swiperserisData());
   }, [dispatch]);
-if(error){
-  return <Erorr/>
-}
+  if (error) {
+    return <Erorr />;
+  }
   return (
     <div className="swiper-container">
       {loding && <Loding />}
@@ -53,11 +54,14 @@ if(error){
             slidesPerView: 4, // Show 4 slides for very large screens
             spaceBetween: 30, // Space between slides
           },
-        }}
-      >
+        }}>
         {photosSweper.map((photo) => (
           <SwiperSlide key={photo.id}>
-            <div className="slide-content">
+            <div
+              className="slide-content"
+              onClick={() => {
+                navigate(`/tv/${photo.id}/${photo.name}`);
+              }}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${photo.poster_path}`}
                 alt={photo.title}

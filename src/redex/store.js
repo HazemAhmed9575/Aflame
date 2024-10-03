@@ -7,6 +7,7 @@ import { moveData } from './slices/homeSlices/topMove';
 import { seriesData } from './slices/homeSlices/topSeries';
 import { series } from "./slices/seriesSlice";
 import { moves } from "./slices/moviesSlice";
+import { DetailsMoveSriesSlices } from "./slices/detailsSlices/move_sriesDetails";
 
 const store = configureStore({
   reducer: {
@@ -16,7 +17,8 @@ const store = configureStore({
     moveData,
     seriesData,
     moves,
-    series
+    series,
+    DetailsMoveSriesSlices
   },
 });
 
