@@ -3,7 +3,7 @@ import NavBar from './compont/NavBar'
 import Home from './padges/Home'
 import Move from './padges/Move'
 import Series from './padges/Series'
-import CpntactUs from './padges/CpntactUs'
+import ContactUs from './padges/CpntactUs'
 import { Route, Routes } from 'react-router-dom'
 import Footer from './compont/Footer'
 
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/move" element={<Move/> }/>
           <Route path="/series" element={<Series/> }/>
-          <Route path="/cpntacus" element={<CpntactUs/> }/>
+          <Route path="/contacus" element={<ContactUs/> }/>
         </Routes>
 <Footer/>
 
