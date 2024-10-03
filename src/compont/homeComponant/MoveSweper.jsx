@@ -27,7 +27,7 @@ const MoveSweper = () => {
   }
 
   return (
-    <div className="swiper-container">
+    <div className="swiper-container flex justify-center items-center">
       {loding && <Loding />}
       <Swiper
         loop={true} // Enable loop
