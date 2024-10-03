@@ -44,11 +44,11 @@ if (error) {
     <div  className="flex flex-wrap justify-center gap-6 p-6 w-full">
 
     {seriestv?.map((data) => (
-      <div key={data.id} className="flex flex-col max-w-sm sm:max-w-xs rounded overflow-hidden shadow-lg bg-gray-800 text-white w-full sm:w-auto">
+      <div key={data.id} className="flex flex-col max-w-sm sm:max-w-xs rounded overflow-hidden shadow-lg bg-[#212529] text-white w-full sm:w-auto">
         <img className="w-full" src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.name} />
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">TITLE: {data.name}</div>
-          <p className="text-gray-400 text-base">OVERVIEW: {data.overview.slice(0,10)}  </p>
+          <p className="font-bold text-xl mb-2">TITLE: {data.name}</p>
+          <p className="text-gray-400 text-base">OVERVIEW: {data.overview.slice(0,10)}...  </p>
           <div className="flex items-center justify-between">
             <p>RATE :{data.vote_average}</p>
             <ReactStars
@@ -60,7 +60,7 @@ if (error) {
               />
           </div>
         </div>
-        <div className="px-6 py-4">
+        <div className="px-6 py-4 text-center">
           <button className="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
             DETAILS
           </button>
