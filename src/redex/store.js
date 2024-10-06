@@ -6,7 +6,6 @@ import { moveData } from "./slices/homeSlices/topMove";
 import { seriesData } from "./slices/homeSlices/topSeries";
 import { series } from "./slices/seriesSlice";
 import { moves } from "./slices/moviesSlice";
-import { DetailsMoveSriesSlices } from "./slices/detailsSlices/move_sriesDetails";
 import { DetailsHome } from "./slices/detailsSlices/detailsHome";
 
 const store = configureStore({
@@ -18,7 +17,6 @@ const store = configureStore({
     seriesData,
     moves,
     series,
-    DetailsMoveSriesSlices,
     DetailsHome,
   },
 });
