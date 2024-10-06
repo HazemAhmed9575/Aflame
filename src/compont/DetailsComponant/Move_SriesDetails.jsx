@@ -4,18 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { IoIosPlayCircle, IoIosStarOutline } from "react-icons/io";
 import { MdNoteAdd } from "react-icons/md";
-import { showVideo } from "../../redex/slices/detailsSlices/move_sriesDetails";
+import { showVideo } from "../../redex/slices/detailsSlices/detailsHome";
+
 // _________________________________________________________________________________
 
 function Move_SriesDetails() {
   // data move_sriesDetails
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++
   const { Subject } = useParams();
-  const { detais, crew, cast, video } = useSelector(
+  const { detais, crew, cast} = useSelector(
     (state) => state.DetailsHome
   );
   const dispatch = useDispatch();
-
+  
+  
+  
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // style div backgroundImage
   let background = {
@@ -24,8 +27,8 @@ function Move_SriesDetails() {
   // end style
   return (
     <div
-      style={background}
-      className=" bg-no-repeat bg-center bg-cover w-full  relative ">
+      style={ background}
+      className=" bg-no-repeat bg-center bg-cover w-full md:sm:py-5 relative ">
       {/* h1 move & serias Details */}
       <div className=" text-center p-7 z-75 relative ">
         <h1 className="font-semibold text-4xl  text-[#0DCAF0] ">
@@ -35,9 +38,9 @@ function Move_SriesDetails() {
       {/* end h1 move & serias Details */}
 
       {/* Detailse */}
-      <div className="flex flex-row justify-center items-center gap-x-6 z-75 relative">
+      <div className="flex lg:flex-row flex-col justify-center items-center gap-x-6 z-75 relative">
         {/* img */}
-        <div className="flex justify-end">
+        <div className="flex lg:justify-end justify-center">
           <img
             src={`https://image.tmdb.org/t/p/w500${detais.poster_path}`}
             className="h-full w-3/4"
@@ -47,14 +50,14 @@ function Move_SriesDetails() {
         {/* end img */}
         {/* Detailse name & OverView & Casting & video & bouton */}
         <div className=" flex flex-col justify-start gap-y-10 w-7/12  ">
-          <div className=" flex flex-col justify-start text-white gap-y-4 ">
-            <h1 className="text-4xl font-medium">
+          <div className=" flex flex-col lg:justify-start lg:items-start items-center justify-center  text-white gap-y-4 ">
+            <h1 className="text-4xl p-2 font-medium">
               {Subject == "movie" ? detais.original_title : detais.name}
             </h1>
-            <p className="text-base font-medium ">
+            <p className="text-base  font-medium ">
               {Subject == "movie" ? detais.release_date : detais.first_air_date}{" "}
               ({detais.original_language}) 👉{" "}
-              {detais?.genres.map((genres) => (
+              {detais.genres?.map((genres) => (
                 <span key={genres.id}>{genres.name},</span>
               ))}
               👈{" "}
@@ -64,7 +67,7 @@ function Move_SriesDetails() {
                     detais.runtime - Math.round(detais.runtime / 60) * 60
                   }min`}{" "}
             </p>
-            <div>
+            <div >
               <span className="text-4xl text-[#0DCAF0] ">OverView : </span>
               <p className="inline text-base font-medium">{detais.overview}</p>
             </div>
@@ -137,7 +140,7 @@ function Move_SriesDetails() {
               Movie
             </button>
             <button
-              onClick={() => dispatch(showVideo(video[0]))}
+              onClick={() => dispatch(showVideo())}
               className="text-white flex flex-col items-center">
               {" "}
               <IoIosPlayCircle className="text-red-500 text-4xl" /> Play Trailer

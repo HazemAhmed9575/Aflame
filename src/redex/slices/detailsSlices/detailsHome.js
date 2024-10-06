@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 //  fu get detalis move & series
 export const getDetalis = createAsyncThunk(
   "/getDetalis",
@@ -77,6 +77,26 @@ const initialState = {
 const DetailsSlices = createSlice({
   name: "DetailsSlices",
   initialState,
+  reducers: {
+    // fu alart video
+    showVideo: (state ) => {
+
+if (state.video[0]) {
+  Swal.fire({
+    html: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${state.video[0].key}?si=dFaN3MJ_NpFtMKqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+    showConfirmButton: false,
+    background: "#212529",
+  });
+} else {
+  Swal.fire({
+    html: `<a style="color:#0839EF" href="${state.detais.homepage}"> Go to the Home Page</a>`,
+    showConfirmButton: false,
+    background: "#212529",
+  });
+}
+       
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getDetalis.pending, (state) => {
@@ -113,3 +133,4 @@ const DetailsSlices = createSlice({
 });
 
 export const DetailsHome = DetailsSlices.reducer;
+export const { showVideo } = DetailsSlices.actions;
