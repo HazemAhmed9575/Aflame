@@ -35,6 +35,7 @@ const topMoveData = createSlice({
     });
     builder.addCase(getTopMoveData.fulfilled, (state, action) => {
       state.loding = false;
+      
       state.movesData = action.payload.filter((move) => move.vote_average > 7);
     });
     builder.addCase(getTopMoveData.rejected, (state) => {

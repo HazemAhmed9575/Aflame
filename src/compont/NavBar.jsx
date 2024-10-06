@@ -55,7 +55,7 @@ function NavBar() {
   );
   // end  navList Home, Movies , Series , Cpntact Us
   return (
-    <Navbar className=" max-w-full bg-[#212529] rounded-none border-0 p-2 sticky top-0 z-10  ">
+    <Navbar className=" max-w-full bg-[#212529] rounded-none border-0 p-2 sticky top-0 z-100  ">
       <div className=" w-full flex flex-wrap items-center justify-around font-mono ">
         {/* navList and  Redux Movies */}
         <div className=" flex gap-x-5">
