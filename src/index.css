@@ -23,6 +23,9 @@ body {
   box-sizing: border-box;
   animation: animloader 1s ease-in infinite alternate;
 }
+.transparent{
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, .8) 0, transparent 60%, rgba(0, 0, 0, .8));
+}
 
 @keyframes animloader {
   0% {

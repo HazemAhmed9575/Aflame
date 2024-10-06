@@ -66,6 +66,8 @@ setPagin:(state,{payload})=>{
       })
       .addCase(getMoveData.fulfilled, (state, { payload }) => {
         state.loading = false; // Set loading to false when data is received
+       
+        
         state.moveData = payload; // Store the fetched movie data
       })
       .addCase(getMoveData.rejected, (state, { payload }) => {

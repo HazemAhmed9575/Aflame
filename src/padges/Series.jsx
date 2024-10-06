@@ -22,6 +22,13 @@ dispatch(setPagin(false))
 },[dispatch,padges])
 
 
+  if (loding) {
+    return (
+      <div className="flex justify-center items-center w-full h-screen">
+        <Loding/>
+      </div>
+    );
+  }
 
 if (error) {
   return <Erorr/>
@@ -41,7 +48,7 @@ if (error) {
   </span>
 </h1>
 
-    {loding&& <Loding/>}
+    
     <div  className="flex flex-wrap justify-center gap-6 p-6 w-full">
 
     {seriestv?.map((data) => (

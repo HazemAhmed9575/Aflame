@@ -9,14 +9,10 @@ module.exports = withMT({
     "./node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'hero-pattern': "url('/img/hero-pattern.svg')",
-      
-      }
-
-
-    },
+    extend: {    zIndex: {
+      '100': '100',
+      '75':'75'
+    }},
   },
   plugins: [],
 });
