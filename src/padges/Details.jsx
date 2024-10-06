@@ -9,7 +9,7 @@ import {
   getDetalis,
   getVideo,
 } from "../redex/slices/detailsSlices/detailsHome";
-import ExtraDetails from "../compont/DetailsComponant/extraDetails";
+import RightDetails from "../compont/DetailsComponant/RightDetails";
 
 
 
@@ -43,7 +43,7 @@ function Details() {
    
 
 
-    <ExtraDetails/>
+    <RightDetails/>
 
     </div>
   );

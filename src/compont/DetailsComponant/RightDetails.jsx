@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Avatar } from "@material-tailwind/react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
-function ExtraDetails() {
+function RightDetails() {
   const { Subject, id, name } = useParams();
   const { detais } = useSelector((state) => state.DetailsHome);
 
@@ -120,4 +120,4 @@ function ExtraDetails() {
   return Subject == "movie" ? move : sries;
 }
 
-export default ExtraDetails;
+export default RightDetails;
