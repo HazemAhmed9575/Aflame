@@ -11,6 +11,8 @@ import {
 } from "../redex/slices/detailsSlices/detailsHome";
 import ExtraDetails from "../compont/DetailsComponant/extraDetails";
 
+
+
 function Details() {
   const { Subject, id } = useParams();
   const { error, loading } = useSelector((state) => state.DetailsHome);
