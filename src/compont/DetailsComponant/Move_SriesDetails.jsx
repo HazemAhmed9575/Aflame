@@ -12,7 +12,7 @@ function Move_SriesDetails() {
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++
   const { Subject } = useParams();
   const { moveDetails } = useSelector((state) => state.details);
- 
+
   // const {video} =useSelector((state)=>state.videos)
   const { cast, crew } = useSelector((state) => state.cradit);
   const dispatch = useDispatch();
@@ -27,8 +27,7 @@ function Move_SriesDetails() {
   return (
     <div
       style={background}
-      className=" bg-no-repeat bg-center bg-cover w-full md:sm:py-5 relative "
-    >
+      className=" bg-no-repeat bg-center bg-cover w-full md:sm:py-5 relative ">
       {/* h1 move & serias moveDetails */}
       <div className=" text-center p-7 z-75 relative ">
         <h1 className="font-semibold md:text-4xl  text-[#0DCAF0]  text-base">
@@ -152,8 +151,7 @@ function Move_SriesDetails() {
             </button>
             <button
               onClick={() => dispatch(showVideo())}
-              className="text-white flex flex-col items-center"
-            >
+              className="text-white flex flex-col items-center">
               {" "}
               <IoIosPlayCircle className="text-red-500 text-4xl" /> Play Trailer
             </button>
@@ -161,8 +159,7 @@ function Move_SriesDetails() {
           <div className="text-center ">
             <button
               onClick={() => window.history.go(-1)}
-              className="py-1.5 px-10 text-base  text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black"
-            >
+              className="py-1.5 px-10 text-base  text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black">
               Back a step
             </button>
           </div>

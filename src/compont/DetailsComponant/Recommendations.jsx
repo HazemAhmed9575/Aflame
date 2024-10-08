@@ -17,9 +17,6 @@ function Recommendations() {
     dispatch(getRecommendations({ Subject, id }));
   }, [dispatch, id]);
 
-
-  
-
   if (loading) {
     return (
       <div className="flex justify-center items-center w-full h-screen">
@@ -46,10 +43,11 @@ function Recommendations() {
 
       <div className="relative  overflow-x-auto overflow-y-hidden  whitespace-nowrap ">
         {recommend.map((data, index) => (
-          <Link to={`/${Subject}/${data.id}/${data.title}`}
+          <Link
+            to={`/${Subject}/${data.id}/${data.title}`}
             key={index}
             className=" w-80  gap-3 inline-flex p-3 m-2 rounded  flex-col bg-[#212529]    ">
-            <div  className="lg:h-1/2 w-full">
+            <div className="lg:h-1/2 w-full">
               <img
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 className="w-full h-full"
@@ -58,12 +56,14 @@ function Recommendations() {
             </div>
 
             <div className="flex justify-between  items-center">
-              <h4 className="text-white">{ Subject == "movie" ? data.title:data.name}</h4>
+              <h4 className="text-white">
+                {Subject == "movie" ? data.title : data.name}
+              </h4>
               <h4 className="text-[#0dcaf0]">
                 {Math.trunc(data.vote_average * 10)}%
               </h4>
             </div>
-          </Link >
+          </Link>
         ))}
 
         <div className=" h-full absolute top-0 right-0  bg-gradient-to-r from-transparent opacity-100 after:opacity-0 to-black w-16 "></div>
