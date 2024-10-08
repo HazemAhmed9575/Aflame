@@ -3,9 +3,11 @@ import { IconButton, Typography } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { decremintPage, incremintPage, toMax, toMini } from "../redex/slices/moviesSlice";
+import { decremintPageSeries, incremintPageSeries, toMaxSeries, toMiniSeries } from "../redex/slices/seriesSlice";
 
 const Pagination = () => {
-  const { pageNumber } = useSelector((state) => state.moves);
+  const { pageNumber,Pagin } = useSelector((state) => state.moves);
+  const { padges } = useSelector((state) => state.series);
   const dispatch = useDispatch();
 
   return (
@@ -14,8 +16,8 @@ const Pagination = () => {
       <IconButton
         size="sm"
         variant="outlined"
-        onClick={() => dispatch(toMini())}
-        disabled={pageNumber === 1}
+        onClick={() => Pagin?dispatch(toMini()):dispatch(toMiniSeries())}
+        disabled={Pagin?pageNumber === 1:padges===1}
         className="hidden sm:flex" // Hidden on small screens
         color="white"
       >
@@ -39,8 +41,8 @@ const Pagination = () => {
       <IconButton
         size="sm"
         variant="outlined"
-        onClick={() => dispatch(decremintPage())}
-        disabled={pageNumber === 1}
+        onClick={() =>Pagin?dispatch(decremintPage()):dispatch(decremintPageSeries())}
+        disabled={Pagin?pageNumber === 1:padges===1}
         color="white"
         className="flex"
       >
@@ -49,7 +51,7 @@ const Pagination = () => {
 
       {/* Page number display */}
       <Typography color="gray" className="font-normal text-sm sm:text-base">
-        Page <strong className="text-white">{pageNumber}</strong> of{" "}
+        Page <strong className="text-white">{Pagin?pageNumber:padges}</strong> of{" "}
         <strong className="text-white">500</strong>
       </Typography>
 
@@ -57,8 +59,8 @@ const Pagination = () => {
       <IconButton
         size="sm"
         variant="outlined"
-        onClick={() => dispatch(incremintPage())}
-        disabled={pageNumber === 500}
+        onClick={() =>Pagin?dispatch(incremintPage()):dispatch(incremintPageSeries())}
+        disabled={Pagin?pageNumber === 500:padges===500}
         color="white"
         className="flex"
       >
@@ -69,8 +71,8 @@ const Pagination = () => {
       <IconButton
         size="sm"
         variant="outlined"
-        onClick={() => dispatch(toMax())}
-        disabled={pageNumber === 500}
+        onClick={() =>Pagin? dispatch(toMax()):dispatch(toMaxSeries())}
+        disabled={Pagin?pageNumber === 500:padges===500}
         className="hidden sm:flex" // Hidden on small screens
         color="white"
       >

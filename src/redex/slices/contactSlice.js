@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import Swal from 'sweetalert2'
 const initialState = {
   email: "",
   subject: "",
@@ -15,8 +15,12 @@ export const sendContact = createAsyncThunk(
   "/sendContact",
 
   async (_, { getState, dispatch, rejectWithValue }) => {
-    const { email, subject, message } = getState().contact;
-    if (!email.includes("@")) {
+
+    const { email, subject, message } = getState().contact; // Get current state values
+    // Validation
+    const legalEm = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!legalEm.test(email)) {
+
       dispatch(setErrEmail(true));
       return rejectWithValue("Invalid email address");
     } else {
@@ -53,11 +57,18 @@ export const sendContact = createAsyncThunk(
         "https://api.emailjs.com/api/v1.0/email/send",
         data
       );
-      console.log(response.data);
-
       dispatch(setEmail(""));
       dispatch(setSubject(""));
       dispatch(setMessage(""));
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Thank you for your message.",
+         background: "#212529",
+         color:"#0DCAF0",
+        showConfirmButton: false,
+        timer: 2000
+      });
     } catch (error) {
       return rejectWithValue(error.message);
     }

@@ -7,7 +7,7 @@ import {
   Input,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function NavBar() {
   const [openNav, setOpenNav] = useState(false);
@@ -46,25 +46,25 @@ function NavBar() {
       </Typography>
       <Typography
         as={NavLink}
-        to={"/cpntacus"}
+        to={"/contacus"}
         variant="small"
         className="p-1 font-medium text-base  hover:text-gray-400 ">
-        Cpntact Us
+        Contact Us
       </Typography>
     </div>
   );
   // end  navList Home, Movies , Series , Cpntact Us
   return (
-    <Navbar className=" max-w-full bg-[#212529] rounded-none border-0 p-2 sticky top-0 z-10  ">
+    <Navbar className=" max-w-full bg-[#212529] rounded-none border-0 p-2 sticky top-0 z-100  ">
       <div className=" w-full flex flex-wrap items-center justify-around font-mono ">
         {/* navList and  Redux Movies */}
         <div className=" flex gap-x-5">
-          <Typography
-            as="a"
+          <Link
+            to="/"
             href="#"
             className="font-medium text-white text-xl">
             Redux Movies
-          </Typography>
+          </Link>
 
           <div className="hidden text-gray-500 lg:block  ">{navList}</div>
         </div>
