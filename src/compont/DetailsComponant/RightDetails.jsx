@@ -13,8 +13,6 @@ function RightDetails() {
   const { sriesWord } = useSelector((state) => state.seriesWords);
   const words = sriesWord || []; // Set to an empty array if undefined
 
-  console.log(moveDetails);
-
   // (((((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))))
   const sries = (
     <div className="lg:w-1/4 lg:absolute lg:right-0 lg:h-auto p-10 lg:flex lg:flex-col lg:items-start gap-y-6 flex flex-col items-center w-full text-white text-xl font-medium">
