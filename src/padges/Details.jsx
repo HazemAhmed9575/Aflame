@@ -5,19 +5,24 @@ import { useParams } from "react-router-dom";
 import Erorr from "../compont/Erorr";
 import Loding from "../compont/Loding";
 
+
 import RightDetails from "../compont/DetailsComponant/RightDetails";
 import { getDetalis } from "../redex/slices/detailsSlices/detalis";
 import { getVideo } from "../redex/slices/detailsSlices/video";
 import { getCredits } from "../redex/slices/detailsSlices/cradits";
 import { gitMoveKeywords } from "../redex/slices/detailsSlices/kayWordes/moveKayWordes";
 import { gitSriesKeywords } from "../redex/slices/detailsSlices/kayWordes/sriesKaywordes";
-import Recommendations from "../compont/DetailsComponant/Recommendations";
-import PartofCollection from "../compont/DetailsComponant/PartofCollection";
+
+
+
+
 
 function Details() {
   const { Subject, id } = useParams();
+
   const { moveDetails  } = useSelector((state) => state.details);
  
+
   const dispatch = useDispatch();
 // belongs_to_collection.id
  
@@ -31,9 +36,6 @@ function Details() {
     dispatch(gitSriesKeywords({id}))
   }, [dispatch, id]);
 // (((((((((((((((((((((())))))))))))))))))))))
-
-
-
 
   return (
     <div>

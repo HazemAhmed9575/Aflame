@@ -12,7 +12,6 @@ function Move_SriesDetails() {
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++
   const { Subject } = useParams();
   const { moveDetails } = useSelector((state) => state.details);
- 
   // const {video} =useSelector((state)=>state.videos)
   const { cast, crew } = useSelector((state) => state.cradit);
   const dispatch = useDispatch();

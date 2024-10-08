@@ -15,6 +15,7 @@ import { Recommendations } from "./slices/detailsSlices/Recommendations";
 import { collection } from "./slices/detailsSlices/Collection";
 
 
+
 const store = configureStore({
   reducer: {
     contact,
@@ -31,6 +32,8 @@ const store = configureStore({
     seriesWords,
     Recommendations,
     collection,
+
+
   },
 });
 

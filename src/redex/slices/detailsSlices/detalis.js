@@ -25,7 +25,7 @@ const initialState = {
   moveDetails: [], // Initialized as an object
   detailsLoading: false,
   detailsError: false,
-  
+
 };
 
 const detailsSlices = createSlice({
@@ -40,7 +40,7 @@ const detailsSlices = createSlice({
         state.moveDetails = payload; // Store the data in moveDetails
         state.detailsLoading = false; // Set loading to false
         state.detailsError = false;   // Clear any previous error
-       
+
       })
       .addCase(getDetalis.rejected, (state, action) => {
         state.detailsError = action.payload || true; // Set the error
