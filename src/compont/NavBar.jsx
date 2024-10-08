@@ -7,7 +7,7 @@ import {
   Input,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function NavBar() {
   const [openNav, setOpenNav] = useState(false);
@@ -59,12 +59,12 @@ function NavBar() {
       <div className=" w-full flex flex-wrap items-center justify-around font-mono ">
         {/* navList and  Redux Movies */}
         <div className=" flex gap-x-5">
-          <Typography
-            as="a"
+          <Link
+            to="/"
             href="#"
             className="font-medium text-white text-xl">
             Redux Movies
-          </Typography>
+          </Link>
 
           <div className="hidden text-gray-500 lg:block  ">{navList}</div>
         </div>
