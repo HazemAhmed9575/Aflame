@@ -4,18 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Erorr from "../compont/Erorr";
 import Loding from "../compont/Loding";
-import {
-  getCredits,
-  getDetalis,
-  getVideo,
-} from "../redex/slices/detailsSlices/detailsHome";
+
 import RightDetails from "../compont/DetailsComponant/RightDetails";
+import { getDetalis } from "../redex/slices/detailsSlices/detalis";
+import { getVideo } from "../redex/slices/detailsSlices/video";
+import { getCredits } from "../redex/slices/detailsSlices/cradits";
+import { gitMoveKeywords } from "../redex/slices/detailsSlices/kayWordes/moveKayWordes";
+import { gitSriesKeywords } from "../redex/slices/detailsSlices/kayWordes/sriesKaywordes";
 
 
 
 function Details() {
   const { Subject, id } = useParams();
-  const { error, loading } = useSelector((state) => state.DetailsHome);
   const dispatch = useDispatch();
   //   useEffect get data
 // ((((((((((((((((((((()))))))))))))))))))))
@@ -23,20 +23,10 @@ function Details() {
     dispatch(getDetalis({ Subject, id }));
     dispatch(getVideo({ Subject, id }));
     dispatch(getCredits({ Subject, id }));
+    dispatch(gitMoveKeywords({id}));
+    dispatch(gitSriesKeywords({id}))
   }, [dispatch, id]);
 // (((((((((((((((((((((())))))))))))))))))))))
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center w-full h-screen">
-        <Loding />
-      </div>
-    );
-  }
-  
-  if (error) {
-    return <Erorr />;
-  }
   return (
     <div>
       <Move_SriesDetails />
