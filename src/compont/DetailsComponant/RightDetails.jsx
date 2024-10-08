@@ -93,7 +93,9 @@ function RightDetails() {
   );
   // (((((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))))
   const move = (
-    <div className="lg:w-1/4 lg:absolute lg:right-0 lg:h-auto p-10 lg:flex lg:flex-col gap-y-6 flex flex-col items-start  text-white text-xl font-medium">
+
+    <div className="lg:w-1/4 lg:absolute lg:right-0 lg:h-full lg:top-0 p-10 lg:flex lg:flex-col gap-y-6 flex flex-col items-center lg:items-start  text-white text-xl font-medium">
+
       <div className="flex gap-x-4 text-[#0DCAF0] text-2xl ">
         <Link
           to={`https://www.facebook.com/${name}`}
