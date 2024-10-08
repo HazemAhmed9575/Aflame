@@ -11,8 +11,8 @@ import { getVideo } from "../redex/slices/detailsSlices/video";
 import { getCredits } from "../redex/slices/detailsSlices/cradits";
 import { gitMoveKeywords } from "../redex/slices/detailsSlices/kayWordes/moveKayWordes";
 import { gitSriesKeywords } from "../redex/slices/detailsSlices/kayWordes/sriesKaywordes";
-import Recommendations from "../compont/DetailsComponant/Recommendations";
 import PartofCollection from "../compont/DetailsComponant/PartofCollection";
+import Recommendations from "../compont/DetailsComponant/Recommendations";
 
 function Details() {
   const { Subject, id } = useParams();
