@@ -13,6 +13,7 @@ import { gitMoveKeywords } from "../redex/slices/detailsSlices/kayWordes/moveKay
 import { gitSriesKeywords } from "../redex/slices/detailsSlices/kayWordes/sriesKaywordes";
 import PartofCollection from "../compont/DetailsComponant/PartofCollection";
 import Recommendations from "../compont/DetailsComponant/Recommendations";
+import { getExternalIds } from "../redex/slices/detailsSlices/SocialLinks";
 
 function Details() {
   const { Subject, id } = useParams();
@@ -29,6 +30,8 @@ function Details() {
     dispatch(getCredits({ Subject, id }));
     dispatch(gitMoveKeywords({ id }));
     dispatch(gitSriesKeywords({ id }));
+    dispatch(getExternalIds({ id }));
+
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
