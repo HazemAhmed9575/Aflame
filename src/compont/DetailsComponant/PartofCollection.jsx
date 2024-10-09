@@ -9,6 +9,7 @@ function PartofCollection() {
   const { id } = belongs_to_collection;
   const navigate = useNavigate();
   const { dataCollection } = useSelector((state) => state.collectiones);
+  console.log("🚀 ~ PartofCollection ~ dataCollection:", dataCollection)
   const dispatch = useDispatch();
 
   useEffect(() => {

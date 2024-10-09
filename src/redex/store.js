@@ -14,6 +14,7 @@ import { seriesWords } from "./slices/detailsSlices/kayWordes/sriesKaywordes";
 import { Recommendations } from "./slices/detailsSlices/Recommendations";
 import { collectiones } from "./slices/detailsSlices/Collection";
 
+
 const store = configureStore({
   reducer: {
     contact,
