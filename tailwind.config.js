@@ -12,7 +12,12 @@ module.exports = withMT({
     extend: {    zIndex: {
       '100': '100',
       '75':'75'
-    }},
+    },
+    height: {
+      '85vh': '85vh',
+    }
+
+  },
   },
   plugins: [],
 });
