@@ -11,7 +11,7 @@ export const getDetalis = createAsyncThunk(
         headers: {
           accept: "application/json",
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOTQ0YjA5MmViNTBhZDYxM2E5YmE4MTk3M2IyMTY3NSIsIm5iZiI6MTcyNzg4MzI4MC40NzQ2MTYsInN1YiI6IjY2ZjlhYzlmZTdkMjRlYmIyYmEyNjVhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.js0nQHd1HmgjSIbdxzjSji985VdDD0TF_Q7bwpsIceQ"
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOTQ0YjA5MmViNTBhZDYxM2E5YmE4MTk3M2IyMTY3NSIsIm5iZiI6MTcyNzg4MzI4MC40NzQ2MTYsInN1YiI6IjY2ZjlhYzlmZTdkMjRlYmIyYmEyNjVhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.js0nQHd1HmgjSIbdxzjSji985VdDD0TF_Q7bwpsIceQ",
         },
       });
       return data; // Return data directly (no need for data.data)
@@ -38,11 +38,13 @@ const detailsSlices = createSlice({
       .addCase(getDetalis.fulfilled, (state, { payload }) => {
         state.moveDetails = payload; // Store the data in moveDetails
         state.detailsLoading = false; // Set loading to false
-        state.detailsError = false;   // Clear any previous error
+        state.detailsError = false; // Clear any previous error
+
+
       })
       .addCase(getDetalis.rejected, (state, action) => {
         state.detailsError = action.payload || true; // Set the error
-        state.detailsLoading = false;  // Stop loading
+        state.detailsLoading = false; // Stop loading
       });
   },
 });
