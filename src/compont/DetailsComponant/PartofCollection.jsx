@@ -5,15 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 function PartofCollection() {
   const { moveDetails } = useSelector((state) => state.details);
-
+  const { belongs_to_collection } = moveDetails;
+  const { id } = belongs_to_collection;
   const navigate = useNavigate();
   const { dataCollection } = useSelector((state) => state.collection);
-  console.log("🚀 ~ PartofCollection ~ dataCollection:", dataCollection);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (moveDetails.belongs_to_collection) {
+    if (belongs_to_collection) {
       dispatch(getcollection(moveDetails.belongs_to_collection.id));
     }
   }, [dispatch, moveDetails.belongs_to_collection]);
@@ -29,7 +28,8 @@ function PartofCollection() {
   return (
     <div
       style={background}
-      className=" lg:w-3/4  flex flex-col gap-2  w-full  bg-no-repeat bg-center bg-cover rounded p-5 ">
+      className=" lg:w-3/4  flex flex-col gap-2  w-full  bg-no-repeat bg-center bg-cover rounded p-5 "
+    >
       <div className="w-full text-center">
         <h1 className="text-white text-3xl">Parto of {dataCollection.name}</h1>
       </div>
@@ -44,7 +44,8 @@ function PartofCollection() {
 
         <button
           onClick={() => navigate(`/collection`)}
-          className="py-1.5 px-10 text-base rounded-full text-[#0dcaf0] border-2  border-white hover:bg-white ">
+          className="py-1.5 px-10 text-base rounded-full text-[#0dcaf0] border-2  border-white hover:bg-white "
+        >
           VIEW THE COLLECTION
         </button>
       </div>
