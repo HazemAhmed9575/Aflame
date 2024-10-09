@@ -32,7 +32,7 @@ const videoSlice = createSlice({
   initialState,
   reducers: {
     // fu alart video
-    showVideo: (state) => {
+    showVideo: (state ,{payload}) => {
       if (state.video[0]) {
         Swal.fire({
           html: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${state.video[0].key}?si=dFaN3MJ_NpFtMKqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
@@ -41,7 +41,7 @@ const videoSlice = createSlice({
         });
       } else {
         Swal.fire({
-          html: `<a style="color:#0839EF" href="${state.detais.homepage}"> Go to the Home Page</a>`,
+          html: `<a style="color:#0839EF" href="${payload?payload:"/"}"> Go to the Home Page</a>`,
           showConfirmButton: false,
           background: "#212529",
         });

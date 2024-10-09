@@ -14,16 +14,21 @@ export const getcollection = createAsyncThunk(
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOTQ0YjA5MmViNTBhZDYxM2E5YmE4MTk3M2IyMTY3NSIsIm5iZiI6MTcyNzg4MzI4MC40NzQ2MTYsInN1YiI6IjY2ZjlhYzlmZTdkMjRlYmIyYmEyNjVhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.js0nQHd1HmgjSIbdxzjSji985VdDD0TF_Q7bwpsIceQ",
         },
       });
-      return res;
+
+
+      // Extract only serializable data
+      return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(e.response.data);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
+
 const initialState = {
-  dataCollection: {},
-  collectionLoding: false,
-  collectionErorr: false,
+  dataCollection: [],
+  collectionLoading: false,
+  collectionError: false,
+
 };
 
 const collectionSlice = createSlice({
@@ -32,15 +37,17 @@ const collectionSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getcollection.pending, (state) => {
-        state.collectionLoding = true;
+
+        state.collectionLoading = true;
       })
       .addCase(getcollection.fulfilled, (state, { payload }) => {
-        state.collectionLoding = false;
-        state.dataCollection = payload.data;
+        state.collectionLoading = false;
+        state.dataCollection = payload; // Payload is now only the data part
       })
       .addCase(getcollection.rejected, (state) => {
-        state.collectionLoding = false;
-        state.collectionErorr = true;
+        state.collectionLoading = false;
+        state.collectionError = true;
+
       });
   },
 });
