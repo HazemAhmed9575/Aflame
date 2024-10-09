@@ -8,7 +8,7 @@ function PartofCollection() {
   const { belongs_to_collection } = moveDetails;
   const { id } = belongs_to_collection;
   const navigate = useNavigate();
-  const { dataCollection } = useSelector((state) => state.collection);
+  const { dataCollection } = useSelector((state) => state.collectiones);
   const dispatch = useDispatch();
 
   useEffect(() => {

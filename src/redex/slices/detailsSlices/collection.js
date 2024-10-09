@@ -48,4 +48,4 @@ const collectionSlice = createSlice({
   },
 });
 
-export const collection = collectionSlice.reducer;
+export const collectiones = collectionSlice.reducer;
