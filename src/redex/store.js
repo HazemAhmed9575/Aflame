@@ -30,7 +30,6 @@ const store = configureStore({
     seriesWords,
     Recommendations,
     collection,
-
   },
 });
 
