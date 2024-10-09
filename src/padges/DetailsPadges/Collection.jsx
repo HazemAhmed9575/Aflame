@@ -12,7 +12,7 @@ function Collection() {
     if (moveDetails && moveDetails.belongs_to_collection) {
       dispatch(getCollection(moveDetails.belongs_to_collection.id));
     }
-  }, [dispatch]);
+  }, [dispatch ,moveDetails]);
 
   // Safe handling of background image
   let background = {

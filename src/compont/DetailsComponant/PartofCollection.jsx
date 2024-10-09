@@ -7,13 +7,11 @@ function PartofCollection() {
   const { moveDetails } = useSelector((state) => state.details);
   const navigate = useNavigate();
   const { dataCollection } = useSelector((state) => state.collection);
-console.log(dataCollection);
   const dispatch = useDispatch();
-  console.log(moveDetails.belongs_to_collection.id);
 
   useEffect(() => {
-      dispatch(getCollection(moveDetails.belongs_to_collection.id));
-  }, [dispatch]);
+    dispatch(getCollection(moveDetails.belongs_to_collection.id));
+  }, [dispatch, moveDetails.belongs_to_collection.id]);
 
   let background = {
     backgroundImage: dataCollection?.backdrop_path

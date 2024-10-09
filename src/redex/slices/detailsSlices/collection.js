@@ -16,11 +16,9 @@ export const getCollection = createAsyncThunk(
         },
       });
       // Log the full response (for debugging, can remove later)
-      console.log("Response:", res);
       return res.data;
     } catch (error) {
       // Log the error for debugging (can remove later)
-      console.error("Error fetching collection:", error.response?.data);
       return thunkAPI.rejectWithValue(error.response?.data || "Unknown error");
     }
   }
@@ -42,17 +40,14 @@ const collectionSlice = createSlice({
       .addCase(getCollection.pending, (state) => {
         state.collectionLoading = true;
         state.collectionError = null; // Reset error on new fetch
-        console.log("Fetching collection..."); // Log the pending state
       })
       .addCase(getCollection.fulfilled, (state, { payload }) => {
         state.collectionLoading = false;
         state.dataCollection = payload; // Store the fetched data
-        console.log("Collection data:", payload); // Log the data for debugging
       })
       .addCase(getCollection.rejected, (state, action) => {
         state.collectionLoading = false;
         state.collectionError = action.payload || "Failed to fetch collection"; // Store error
-        console.log("Failed to fetch collection", action.payload); // Log error for debugging
       });
   },
 });
