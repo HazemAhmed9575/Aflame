@@ -149,8 +149,10 @@ function Move_SriesDetails() {
               Movie
             </button>
             <button
+
               onClick={() => dispatch(showVideo(moveDetails.homepage
                 ))}
+
               className="text-white flex flex-col items-center">
               {" "}
               <IoIosPlayCircle className="text-red-500 text-4xl" /> Play Trailer

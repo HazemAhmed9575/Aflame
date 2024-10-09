@@ -15,6 +15,7 @@ export const getcollection = createAsyncThunk(
         },
       });
 
+
       // Extract only serializable data
       return res.data;
     } catch (error) {
@@ -27,6 +28,7 @@ const initialState = {
   dataCollection: [],
   collectionLoading: false,
   collectionError: false,
+
 };
 
 const collectionSlice = createSlice({
@@ -35,6 +37,7 @@ const collectionSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getcollection.pending, (state) => {
+
         state.collectionLoading = true;
       })
       .addCase(getcollection.fulfilled, (state, { payload }) => {
@@ -44,6 +47,7 @@ const collectionSlice = createSlice({
       .addCase(getcollection.rejected, (state) => {
         state.collectionLoading = false;
         state.collectionError = true;
+
       });
   },
 });
