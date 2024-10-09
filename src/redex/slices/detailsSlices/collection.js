@@ -14,8 +14,6 @@ export const getcollection = createAsyncThunk(
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOTQ0YjA5MmViNTBhZDYxM2E5YmE4MTk3M2IyMTY3NSIsIm5iZiI6MTcyNzg4MzI4MC40NzQ2MTYsInN1YiI6IjY2ZjlhYzlmZTdkMjRlYmIyYmEyNjVhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.js0nQHd1HmgjSIbdxzjSji985VdDD0TF_Q7bwpsIceQ",
         },
       });
-
-
       // Extract only serializable data
       return res.data;
     } catch (error) {
@@ -28,7 +26,6 @@ const initialState = {
   dataCollection: [],
   collectionLoading: false,
   collectionError: false,
-
 };
 
 const collectionSlice = createSlice({
@@ -37,7 +34,6 @@ const collectionSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getcollection.pending, (state) => {
-
         state.collectionLoading = true;
       })
       .addCase(getcollection.fulfilled, (state, { payload }) => {
@@ -47,9 +43,8 @@ const collectionSlice = createSlice({
       .addCase(getcollection.rejected, (state) => {
         state.collectionLoading = false;
         state.collectionError = true;
-
       });
   },
 });
 
-export const collection = collectionSlice.reducer;
+export const collectiones = collectionSlice.reducer;

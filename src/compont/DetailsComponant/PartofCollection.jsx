@@ -5,16 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 function PartofCollection() {
   const { moveDetails } = useSelector((state) => state.details);
-
   const { belongs_to_collection } = moveDetails;
   const { id } = belongs_to_collection;
   const navigate = useNavigate();
-  const { dataCollection } = useSelector((state) => state.collection);
+  const { dataCollection } = useSelector((state) => state.collectiones);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (belongs_to_collection) {
-
       dispatch(getcollection(moveDetails.belongs_to_collection.id));
     }
   }, [dispatch, moveDetails.belongs_to_collection]);
@@ -48,7 +47,6 @@ function PartofCollection() {
 
         <button
           onClick={() => navigate(`/collection`)}
-
           className="py-1.5 px-10 text-base rounded-full text-[#0dcaf0] border-2  border-white hover:bg-white "
         >
 

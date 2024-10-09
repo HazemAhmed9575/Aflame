@@ -12,7 +12,8 @@ import { details } from "./slices/detailsSlices/detalis";
 import { moveWordes } from "./slices/detailsSlices/kayWordes/moveKayWordes";
 import { seriesWords } from "./slices/detailsSlices/kayWordes/sriesKaywordes";
 import { Recommendations } from "./slices/detailsSlices/Recommendations";
-import { collection } from "./slices/detailsSlices/Collection";
+import { collectiones } from "./slices/detailsSlices/Collection";
+
 
 const store = configureStore({
   reducer: {
@@ -29,8 +30,7 @@ const store = configureStore({
     moveWordes,
     seriesWords,
     Recommendations,
-    collection,
-
+    collectiones ,
   },
 });
 
