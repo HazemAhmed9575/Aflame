@@ -13,6 +13,7 @@ import { gitMoveKeywords } from "../redex/slices/detailsSlices/kayWordes/moveKay
 import { gitSriesKeywords } from "../redex/slices/detailsSlices/kayWordes/sriesKaywordes";
 import PartofCollection from "../compont/DetailsComponant/PartofCollection";
 import Recommendations from "../compont/DetailsComponant/Recommendations";
+import MediaComponant from "../compont/DetailsComponant/MediaComponant";
 
 function Details() {
   const { Subject, id } = useParams();
@@ -37,6 +38,10 @@ function Details() {
       <Move_SriesDetails />
 
       <div className="lg:relative flex flex-col gap-3 py-2 lg:md:px-12">
+
+
+
+        <MediaComponant/>
         {Subject == "movie" && moveDetails.belongs_to_collection && (
           <PartofCollection />
         )}

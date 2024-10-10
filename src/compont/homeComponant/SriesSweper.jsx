@@ -7,8 +7,8 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import { swiperserisData } from "../../redex/slices/homeSlices/seriesPhotoSlice";
-import Loding from "./../Loding";
-import Erorr from "./../Erorr";
+import Loding from "../Loding";
+import Erorr from "../Erorr";
 import { useNavigate } from "react-router-dom";
 
 const SriesSweper = () => {
