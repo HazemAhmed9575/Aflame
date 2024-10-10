@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import Move_SriesDetails from "../compont/DetailsComponant/Move_SriesDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Erorr from "../compont/Erorr";
-import Loding from "../compont/Loding";
-
 import RightDetails from "../compont/DetailsComponant/RightDetails";
 import { getDetalis } from "../redex/slices/detailsSlices/detalis";
 import { getVideo } from "../redex/slices/detailsSlices/video";
@@ -14,6 +11,7 @@ import { gitSriesKeywords } from "../redex/slices/detailsSlices/kayWordes/sriesK
 import PartofCollection from "../compont/DetailsComponant/PartofCollection";
 import Recommendations from "../compont/DetailsComponant/Recommendations";
 import { getExternalIds } from "../redex/slices/detailsSlices/SocialLinks";
+import Cast from "../compont/DetailsComponant/Cast";
 
 function Details() {
   const { Subject, id } = useParams();
@@ -31,15 +29,14 @@ function Details() {
     dispatch(gitMoveKeywords({ id }));
     dispatch(gitSriesKeywords({ id }));
     dispatch(getExternalIds({ id }));
-
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
   return (
     <div>
       <Move_SriesDetails />
-
       <div className="lg:relative flex flex-col gap-3 py-2 lg:md:px-12">
+        <Cast />
         {Subject == "movie" && moveDetails.belongs_to_collection && (
           <PartofCollection />
         )}

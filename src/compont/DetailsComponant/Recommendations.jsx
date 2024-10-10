@@ -41,7 +41,7 @@ function Recommendations() {
         </h1>
       </div>
 
-      <div className="relative  overflow-x-auto overflow-y-hidden  whitespace-nowrap ">
+      <div className="relative  overflow-x-auto overflow-y-hidden  whitespace-nowrap">
         {recommend.map((data, index) => (
           <Link
             to={`/${Subject}/${data.id}/${data.title}`}
@@ -66,7 +66,7 @@ function Recommendations() {
           </Link>
         ))}
 
-        <div className=" h-full absolute top-0 right-0  bg-gradient-to-r from-transparent opacity-100 after:opacity-0 to-black w-16 "></div>
+        {/* <div className=" h-full absolute top-0 right-0  bg-gradient-to-r from-transparent opacity-100 after:opacity-0 to-black w-16 "></div> */}
       </div>
     </div>
   );
