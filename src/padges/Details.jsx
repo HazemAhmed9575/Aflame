@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import Move_SriesDetails from "../compont/DetailsComponant/Move_SriesDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Erorr from "../compont/Erorr";
+import Loding from "../compont/Loding";
+
 import RightDetails from "../compont/DetailsComponant/RightDetails";
 import { getDetalis } from "../redex/slices/detailsSlices/detalis";
 import { getVideo } from "../redex/slices/detailsSlices/video";
@@ -10,12 +13,13 @@ import { gitMoveKeywords } from "../redex/slices/detailsSlices/kayWordes/moveKay
 import { gitSriesKeywords } from "../redex/slices/detailsSlices/kayWordes/sriesKaywordes";
 import PartofCollection from "../compont/DetailsComponant/PartofCollection";
 import Recommendations from "../compont/DetailsComponant/Recommendations";
-import MediaComponant from "../compont/DetailsComponant/MediaComponant";
 import { getExternalIds } from "../redex/slices/detailsSlices/SocialLinks";
 import Cast from "../compont/DetailsComponant/Cast";
+
 function Details() {
   const { Subject, id } = useParams();
   const { moveDetails } = useSelector((state) => state.details);
+
   const dispatch = useDispatch();
   // belongs_to_collection.id
 
@@ -28,18 +32,20 @@ function Details() {
     dispatch(gitMoveKeywords({ id }));
     dispatch(gitSriesKeywords({ id }));
     dispatch(getExternalIds({ id }));
+
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
   return (
     <div>
       <Move_SriesDetails />
+      
       <div className="lg:relative flex flex-col gap-3 py-2 lg:md:px-12">
-        <Cast />
-        <MediaComponant/>
+      <Cast/>
         {Subject == "movie" && moveDetails.belongs_to_collection && (
           <PartofCollection />
         )}
+        
         <Recommendations />
         <RightDetails />
       </div>
