@@ -10,6 +10,7 @@ function RightDetails() {
   const { moveDetails } = useSelector((state) => state.details);
   const { moveWords } = useSelector((state) => state.moveWordes);
   const { sriesWord } = useSelector((state) => state.seriesWords);
+  const { externalIds } = useSelector((state) => state.externalIds);
   const words = sriesWord || []; // Set to an empty array if undefined
 
   // (((((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))))
@@ -92,21 +93,22 @@ function RightDetails() {
   );
   // (((((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))))
   const move = (
-
     <div className="lg:w-1/4 lg:absolute lg:right-0 lg:h-full lg:top-0 p-10 lg:flex lg:flex-col gap-y-6 flex flex-col items-center lg:items-start  text-white text-xl font-medium">
-
       <div className="flex gap-x-4 text-[#0DCAF0] text-2xl ">
         <Link
-          to={`https://www.facebook.com/${name}`}
+          to={`https://www.facebook.com/${externalIds.facebook_id}`}
           className="hover:text-[#0839EF]"
         >
           <FaFacebook />
         </Link>
-        <Link to={`https://x.com/${name}`} className="hover:text-[#0839EF]">
+        <Link
+          to={`https://x.com/${externalIds.twitter_id}`}
+          className="hover:text-[#0839EF]"
+        >
           <FaTwitter />
         </Link>
         <Link
-          to={`https://www.instagram.com/${name}`}
+          to={`https://www.instagram.com/${externalIds.instagram_id}`}
           className="hover:text-[#0839EF]"
         >
           <FaInstagram />

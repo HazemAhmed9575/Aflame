@@ -25,6 +25,7 @@ function Collection() {
       ? `url("https://image.tmdb.org/t/p/w500${dataCollection.backdrop_path}")`
       : "none",
   };
+
   // ___________________________________________________________
   if (collectionLoading) {
     return (
@@ -92,6 +93,7 @@ function Collection() {
           </h1>
         </div>
       </div>
+
       {/* Featured Cast */}
       <div className=" lg:w-4/5 w-full flex flex-col gap-7 p-12">
         <h1 className="text-[#0DCAF0] text-3xl font-bold">Featured Cast</h1>

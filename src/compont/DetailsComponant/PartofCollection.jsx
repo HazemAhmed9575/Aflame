@@ -13,6 +13,7 @@ function PartofCollection() {
       dispatch(getCollection(moveDetails.belongs_to_collection.id));
   }, [dispatch]);
 
+
   let background = {
     backgroundImage: dataCollection?.backdrop_path
       ? `url("https://image.tmdb.org/t/p/w500${dataCollection.backdrop_path}")`
