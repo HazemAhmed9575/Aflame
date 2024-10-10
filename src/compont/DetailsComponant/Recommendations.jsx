@@ -40,7 +40,7 @@ function Recommendations() {
 
       <div className="relative overflow-x-auto overflow-y-hidden whitespace-nowrap">
         {recommend
-          .filter((data) => data.poster_path) // Only show data with a poster path
+          .filter((data) => data.poster_path) 
           .map((data, index) => (
             <Link
               to={`/${Subject}/${data.id}/${data.title}`}
@@ -66,8 +66,7 @@ function Recommendations() {
             </Link>
           ))}
 
-        {/* Gradient for scroll indication */}
-        {/* <div className="h-full absolute top-0 right-0 bg-gradient-to-r from-transparent opacity-100 after:opacity-0 to-black w-16"></div> */}
+        
       </div>
     </div>
   );
