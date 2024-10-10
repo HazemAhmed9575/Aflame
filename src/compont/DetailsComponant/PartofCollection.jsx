@@ -8,10 +8,11 @@ function PartofCollection() {
   const navigate = useNavigate();
   const { dataCollection } = useSelector((state) => state.collection);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
-    dispatch(getCollection(moveDetails.belongs_to_collection.id));
-  }, [dispatch, moveDetails.belongs_to_collection.id]);
+      dispatch(getCollection(moveDetails.belongs_to_collection.id));
+  }, [dispatch]);
+
 
   let background = {
     backgroundImage: dataCollection?.backdrop_path
@@ -36,7 +37,7 @@ function PartofCollection() {
         ))}
 
         <button
-          onClick={() => navigate(`/collection`)}
+          onClick={() => navigate(`/collection/${moveDetails.belongs_to_collection.id}`)}
           className="py-1.5 px-10 text-base rounded-full text-[#0dcaf0] border-2  border-white hover:bg-white"
         >
           VIEW THE COLLECTION

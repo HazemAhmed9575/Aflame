@@ -19,7 +19,7 @@ function App() {
           <Route path="/series" element={<Series/> }/>
           <Route path="/contacus" element={<ContactUs/> }/>
           <Route path="/:Subject/:id/:name" element={<Details/> }/>
-          <Route path="/collection" element={<Collection/> }/>
+          <Route path="/collection/:collectionid" element={<Collection/> }/>
         </Routes>
 <Footer/>
 

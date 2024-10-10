@@ -15,6 +15,7 @@ import { Recommendations } from "./slices/detailsSlices/Recommendations";
 import {collection} from "./slices/detailsSlices/collection";
 import {externalIds}from"./slices/detailsSlices/SocialLinks"
 
+
 const store = configureStore({
   reducer: {
     contact,
@@ -32,6 +33,7 @@ const store = configureStore({
     Recommendations,
     collection,
     externalIds
+
   },
 });
 

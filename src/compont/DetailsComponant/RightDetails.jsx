@@ -2,9 +2,8 @@ import React from "react";
 import { AiFillPlaySquare, AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { Avatar, Button } from "@material-tailwind/react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
-import Erorr from "../Erorr";
+
 
 function RightDetails() {
   const { Subject, id, name } = useParams();

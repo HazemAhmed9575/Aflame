@@ -27,7 +27,7 @@ export const getCollection = createAsyncThunk(
 // Initial state
 const initialState = {
   dataCollection: [], // Change to an object to avoid issues accessing properties
-  collectionLoading: false,
+  collectionLoading: true,
   collectionError: null, // Make it null initially for better error tracking
 };
 
