@@ -2,12 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom";
+import Erorr from "../Erorr";
+import Loding from "../Loding";
 
 const Cast = () => {
-  const { cast } = useSelector((state) => state.cradit);
+  const { cast,craditErorr,craditLoding } = useSelector((state) => state.cradit);
   const { Subject, id, name } = useParams();
+  if (craditErorr){
+    return <Erorr/>
+  }
   return (
     <div className="w-full lg:w-3/4 flex flex-col gap-4 max-h-screen p-4">
+      {craditLoding&&<Loding/>}
       <div>
         <h1 className="text-[#0DCAF0] font-semibold text-2xl p-4">
           Top Billed Cast

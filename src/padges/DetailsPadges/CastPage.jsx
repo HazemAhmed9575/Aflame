@@ -27,6 +27,7 @@ const CastPage = () => {
   const { moveDetails, detailsLoading, detailsError } = useSelector(
     (state) => state.details
   );
+
   const { Subject, id } = useParams();
   const dispatch = useDispatch();
 
@@ -53,7 +54,7 @@ const CastPage = () => {
         />
         <div className="md:ml-4 text-center md:text-left">
           <h1 className="text-2xl font-bold">
-            {moveDetails?.original_title}{" "}
+            {Subject == "movie" ? moveDetails?.title : moveDetails?.name}{" "}
             <span className="text-[#6C757D]">({releaseYear})</span>
           </h1>
           <p
