@@ -9,7 +9,8 @@ import Footer from './compont/Footer'
 import Details from './padges/Details'
 import Collection from './padges/DetailsPadges/Collection'
 import CastPage from './padges/DetailsPadges/CastPage'
-
+import ReviewsPage from './padges/DetailsPadges/ReviewsPage';
+ 
 function App() {
   return (
     <div>
@@ -22,6 +23,8 @@ function App() {
           <Route path="/:Subject/:id/:name" element={<Details/> }/>
           <Route path="/collection/:collectionid" element={<Collection/> }/>
           <Route path='/:Subject/:id/:name/cast' element={<CastPage/>}/>
+          <Route path='/:Subject/:id/:name/reviews' element={<ReviewsPage/>}/>
+
         </Routes>
 <Footer/>
 
