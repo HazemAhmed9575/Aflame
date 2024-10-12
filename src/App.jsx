@@ -9,8 +9,8 @@ import Footer from './compont/Footer'
 import Details from './padges/Details'
 import Collection from './padges/DetailsPadges/Collection'
 import CastPage from './padges/DetailsPadges/CastPage'
-import ReviewsPage from './padges/DetailsPadges/reviewsPage'
-
+import ReviewsPage from './padges/DetailsPadges/ReviewsPage';
+ 
 function App() {
   return (
     <div>
