@@ -17,7 +17,7 @@ function Collection() {
   // Ensure moveDetails and its properties exist before dispatching the action
   useEffect(() => {
     dispatch(getCollection(collectionid));
-  }, [dispatch]);
+  }, [collectionid]);
   // ___________________________________________________________
   // Safe handling of background image
   let background = {
@@ -165,7 +165,7 @@ function Collection() {
           {dataCollection.parts?.map((data, index) => (
             <div
               key={index}
-              className="bg-[#212529] lg:md:p-1 rounded-lg flex lg:flex-row items-center md:flex-col sm:flex-col  lg:gap-x-2">
+              className="bg-[#212529] lg:md:p-1 rounded-lg flex lg:flex-row items-center flex-col  lg:gap-x-2">
               <div
                 onClick={() => navigate(`/movie/${data.id}/${data.title}`)}
                 className="lg:w-1/12 h-full  ">
@@ -176,7 +176,7 @@ function Collection() {
                 />
               </div>
 
-              <div className="w-full lg:flex lg:flex-col lg:items-start md:flex md:flex-col md:items-center md:p-3 sm:flex sm:flex-col sm:items-center text-white ">
+              <div className="w-full flex flex-col lg:items-start  md:items-center md:p-3  items-center text-white ">
                 <button
                   onClick={() => navigate(`/movie/${data.id}/${data.title}`)}
                   className="font-bold hover:text-gray-300">
@@ -185,7 +185,7 @@ function Collection() {
                 <p className="font-medium text-[#65757D]">
                   {data.release_date}
                 </p>
-                <p className="font-medium md:text-center sm:text-center lg:text-start">
+                <p className="font-medium text-center lg:text-start">
                   {data.overview.length > 170
                     ? data.overview.slice(0, 170)
                     : data.overview}

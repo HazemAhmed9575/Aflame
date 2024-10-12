@@ -15,8 +15,13 @@ import PartofCollection from "../compont/DetailsComponant/PartofCollection";
 import Recommendations from "../compont/DetailsComponant/Recommendations";
 import { getExternalIds } from "../redex/slices/detailsSlices/SocialLinks";
 import Cast from "../compont/DetailsComponant/Cast";
+
+import MediaComponant from "../compont/DetailsComponant/MediaComponant";
+import { getMedia, textVideo } from "../redex/slices/detailsSlices/media";
+
 import Social from "../compont/DetailsComponant/Social";
 import { gitSocial } from "../redex/slices/detailsSlices/Social";
+
 
 function Details() {
   const { Subject, id } = useParams();
@@ -34,6 +39,8 @@ function Details() {
     dispatch(gitMoveKeywords({ id }));
     dispatch(gitSriesKeywords({ id }));
     dispatch(getExternalIds({ id }));
+    dispatch(getMedia({ Subject, id }))
+    dispatch(textVideo())
     dispatch(gitSocial({id}));
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
@@ -42,9 +49,13 @@ function Details() {
     <div>
       <Move_SriesDetails />
       
-      <div className="lg:relative flex flex-col gap-3 py-2 lg:md:px-12">
+      <div className="lg:relative flex flex-col gap-y-12 py-2 lg:md:px-12">
       <Cast/>
+
+      <MediaComponant/>
+
       <Social/>
+
         {Subject == "movie" && moveDetails.belongs_to_collection && (
           <PartofCollection />
         )}
