@@ -12,7 +12,6 @@ const Social = () => {
   if (reviewError) {
     return <Erorr />;
   }
-  console.log(review);
   return (
     <div className="flex flex-col p-4 lg:w-3/4">
       {reviewLoading && <Loding />}
