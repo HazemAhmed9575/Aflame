@@ -11,7 +11,7 @@ export const gitSriesKeywords = createAsyncThunk(
         url: `https://api.themoviedb.org/3/tv/${id}/keywords`,
         headers: {
           accept: "application/json",
-          Authorization: "Bearer YOUR_API_TOKEN_HERE", // Replace with a safe way to handle your API token
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNGNlOTQ3ZTkzYTdjYTI5ZDFmNDExYTQ2M2Q5OTQ1ZiIsIm5iZiI6MTcyODY0NTcxMC41MzE0NzIsInN1YiI6IjY2ZjlhZWYwZTdkMjRlYmIyYmEyNjY4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-9P7wYpOVRxRO_yt_WYnczrl9Z6coLmM9xcC6H_3KdU'
         },
       });
 
@@ -42,7 +42,6 @@ const seriesKeywordsSlice = createSlice({
       .addCase(gitSriesKeywords.fulfilled, (state, { payload }) => {
         state.loading = false; // Set loading to false when the request is fulfilled
         state.sriesWord = payload; // Store the fetched keywords in the state
-        console.log(payload);
       })
       .addCase(gitSriesKeywords.rejected, (state, { payload }) => {
         state.loading = false; // Set loading to false when the request is rejected

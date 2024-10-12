@@ -46,7 +46,7 @@ function RightDetails() {
         <div className="w-20">
           {moveDetails?.networks ? (
             <img
-              src={`https://image.tmdb.org/t/p/w500${moveDetails.networks[0].logo_path}`}
+              src={`https://image.tmdb.org/t/p/w500${moveDetails.networks[0]?.logo_path}`}
               alt=""
             />
           ) : (
