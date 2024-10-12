@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import { getRecommendations } from "../../redex/slices/detailsSlices/Recommendations";
 import Loding from "../Loding";
 import Erorr from "../Erorr";
@@ -10,8 +10,8 @@ function Recommendations() {
     (state) => state.Recommendations
   );
   const { Subject, id } = useParams();
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch(); 
+  
   useEffect(() => {
     dispatch(getRecommendations({ Subject, id }));
   }, [dispatch, id]);
