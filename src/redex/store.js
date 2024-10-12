@@ -16,6 +16,7 @@ import {collection} from "./slices/detailsSlices/collection";
 import {externalIds}from"./slices/detailsSlices/SocialLinks"
 import { media } from "./slices/detailsSlices/media";
 import {reviews}from "./slices/detailsSlices/Social"
+import { season } from "./slices/detailsSlices/seasons";
 
 
 
@@ -37,7 +38,8 @@ const store = configureStore({
     collection,
     externalIds,
     media,
-    reviews
+    reviews,
+    season
   },
 });
 

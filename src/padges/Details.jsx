@@ -15,17 +15,17 @@ import PartofCollection from "../compont/DetailsComponant/PartofCollection";
 import Recommendations from "../compont/DetailsComponant/Recommendations";
 import { getExternalIds } from "../redex/slices/detailsSlices/SocialLinks";
 import Cast from "../compont/DetailsComponant/Cast";
-
 import MediaComponant from "../compont/DetailsComponant/MediaComponant";
 import { getMedia, textVideo } from "../redex/slices/detailsSlices/media";
-
 import Social from "../compont/DetailsComponant/Social";
 import { gitSocial } from "../redex/slices/detailsSlices/Social";
-
+import LastSeasonComponant from "../compont/DetailsComponant/LastSeasonComponant";
+import { getSeasons } from "../redex/slices/detailsSlices/seasons";
 
 function Details() {
   const { Subject, id } = useParams();
   const { moveDetails } = useSelector((state) => state.details);
+  console.log("🚀 ~ Details ~ moveDetails:", moveDetails)
 
   const dispatch = useDispatch();
   // belongs_to_collection.id
@@ -39,27 +39,26 @@ function Details() {
     dispatch(gitMoveKeywords({ id }));
     dispatch(gitSriesKeywords({ id }));
     dispatch(getExternalIds({ id }));
-    dispatch(getMedia({ Subject, id }))
-    dispatch(textVideo())
-    dispatch(gitSocial({id}));
+    dispatch(getMedia({ Subject, id }));
+    dispatch(textVideo());
+    dispatch(gitSocial({ id }));
+    dispatch(getSeasons({id}))
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
   return (
     <div>
       <Move_SriesDetails />
-      
+
       <div className="lg:relative flex flex-col gap-y-12 py-2 lg:md:px-12">
-      <Cast/>
+        <Cast />
+{Subject == "tv"&&<LastSeasonComponant/>}
 
-      <MediaComponant/>
-
-      <Social/>
-
+        <Social />
+        <MediaComponant />
         {Subject == "movie" && moveDetails.belongs_to_collection && (
           <PartofCollection />
         )}
-        
         <Recommendations />
         <RightDetails />
       </div>
