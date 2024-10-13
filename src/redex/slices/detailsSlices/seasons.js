@@ -3,11 +3,11 @@ import axios from "axios";
 
 export const getSeasons = createAsyncThunk(
     "/getSeasons",
-    async ({ id }, thunkAPI) => {
+    async ({ id,seasonNumber }, thunkAPI) => {
       try {
         const data = await axios({
           method: "GET",
-          url: `https://api.themoviedb.org/3/tv/${id}/changes`,
+          url: `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}`,
           headers: {
             accept: "application/json",
             Authorization:
@@ -23,9 +23,9 @@ export const getSeasons = createAsyncThunk(
 
   const initialState = {
 
-    Seasons:[]
-
-
+    Seasons:[],
+loding:true,
+erorr:false
   }
 
   const seasonsSlice = createSlice({
@@ -33,15 +33,16 @@ name:"seasonsSlice",
 initialState,
 extraReducers:(builder)=>{
     builder.addCase(getSeasons.pending,(state)=>{
-console.log("pending");
+state.loding=true
     })
     .addCase(getSeasons.fulfilled,(state,{ payload })=>{
-        console.log(payload);
-        
-        console.log("fulfilled");
+       state.loding=false
+        state.Seasons=payload
+       
             })
-            .addCase(getSeasons.rejected,(state,{ payload })=>{
-                console.log("rejected");
+            .addCase(getSeasons.rejected,(state)=>{
+              state.loding=false
+               state.erorr=true
                     })
 
 }
