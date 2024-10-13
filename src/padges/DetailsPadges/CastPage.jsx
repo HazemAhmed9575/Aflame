@@ -36,9 +36,10 @@ const CastPage = () => {
     dispatch(getDetalis({ Subject, id }));
   }, [dispatch, id, Subject]);
 
-  const releaseYear = moveDetails?.release_date
-    ? moveDetails.release_date.slice(0, 4)
-    : "N/A";
+  const releaseYear =
+    Subject === "movie"
+      ? moveDetails?.release_date?.slice(0, 4)
+      : moveDetails?.first_air_date?.slice(0, 4);
   if (craditErorr || detailsError) {
     return <Erorr />;
   }

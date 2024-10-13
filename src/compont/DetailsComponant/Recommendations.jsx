@@ -43,7 +43,7 @@ function Recommendations() {
           .filter((data) => data.poster_path) 
           .map((data, index) => (
             <Link
-              to={`/${Subject}/${data.id}/${data.title}`}
+              to={`/${Subject}/${data.id}/${data.name}`}
               key={index}
               className="w-80 gap-3 inline-flex p-3 m-2 rounded flex-col bg-[#212529]"
             >

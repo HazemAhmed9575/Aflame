@@ -4,11 +4,11 @@ import axios from "axios";
 // Thunk to fetch reviews from the API
 export const gitSocial = createAsyncThunk(
   "gitSocial",
-  async ({ id }, thunkAPI) => {
+  async ({ Subject,id }, thunkAPI) => {
     try {
       const { data } = await axios({
         method: "GET",
-        url: `https://api.themoviedb.org/3/movie/${id}/reviews`,
+        url: `https://api.themoviedb.org/3/${Subject=="movie"?"movie":"tv"}/${id}/reviews`,
         params: { language: "en-US", page: "1" },
         headers: {
           accept: "application/json",

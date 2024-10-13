@@ -3,12 +3,17 @@ import { useSelector, useDispatch } from "react-redux";
 import Erorr from "./../Erorr";
 import Loding from "./../Loding";
 import { Link, useParams } from "react-router-dom";
+import { toggleReview } from "../../redex/slices/detailsSlices/Social";
 
 const Social = () => {
-  const { review, reviewError, reviewLoading } = useSelector(
+  const { review, reviewError, reviewLoading, expandedReviews } = useSelector(
     (state) => state.reviews
   );
+  const dispatch = useDispatch();
   const { Subject, id, name } = useParams();
+  const handleToggleContent = (reviewId) => {
+    dispatch(toggleReview(reviewId)); // Dispatch the toggle action
+  };
   if (reviewError) {
     return <Erorr />;
   }
@@ -44,7 +49,9 @@ const Social = () => {
                     Written by{" "}
                     <span className="text-[#0DCAF0]">{review[0]?.author}</span>{" "}
                     on
-                    <span className="text-[#0DCAF0]">{review[0].formattedDate}</span>
+                    <span className="text-[#0DCAF0]">
+                      {review[0].formattedDate}
+                    </span>
                     <span className="text-[#0DCAF0]"></span>
                   </p>
                 </div>
@@ -52,7 +59,21 @@ const Social = () => {
 
               <div>
                 <h2 className="text-[#0D63C7] font-bold mb-2">Content :-</h2>
-                <p>{review[0]?.content}</p>
+                <p>
+                  {expandedReviews[review[0].id]
+                    ? review[0].content // Show full content
+                    : review[0].content.length > 150
+                    ? `${review[0].content.slice(0, 150)}...`
+                    : review[0].content}
+                </p>
+                {review[0].content.length > 150 && (
+                  <button
+                    className="text-[#0DCAF0] mt-2"
+                    onClick={() => handleToggleContent(review[0].id)}
+                  >
+                    {expandedReviews[review[0].id] ? "Show Less" : "Show More"}
+                  </button>
+                )}
               </div>
             </div>
           ) : (
@@ -64,7 +85,10 @@ const Social = () => {
         </div>
 
         {review.length > 0 ? (
-          <Link to={`/${Subject}/${id}/${name}/reviews`} className="text-[#0DCAF0] hover:underline mt-2 block">
+          <Link
+            to={`/${Subject}/${id}/${name}/reviews`}
+            className="text-[#0DCAF0] hover:underline mt-2 block"
+          >
             Read All Reviews
           </Link>
         ) : (
