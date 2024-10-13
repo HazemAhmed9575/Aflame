@@ -23,7 +23,7 @@ export const getDetalis = createAsyncThunk(
 
 const initialState = {
   moveDetails: [], // Initialized as an object
-  detailsLoading: false,
+  detailsLoading: true,
   detailsError: false,
 };
 
