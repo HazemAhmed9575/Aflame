@@ -31,10 +31,10 @@ function Details() {
     dispatch(getDetalis({ Subject, id }));
     dispatch(getVideo({ Subject, id }));
     dispatch(getCredits({ Subject, id }));
-    dispatch(gitMoveKeywords({ id }));
-    dispatch(gitSriesKeywords({ id }));
-    dispatch(getExternalIds({ id }));
-    dispatch(gitSocial({id}));
+    dispatch(gitMoveKeywords({Subject, id }));
+    dispatch(gitSriesKeywords({ Subject, id}));
+    dispatch(getExternalIds({ Subject, id }));
+    dispatch(gitSocial({Subject, id}));
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
