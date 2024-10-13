@@ -24,7 +24,7 @@ export const gitSocial = createAsyncThunk(
 );
 
 // Utility function to format the date
-const formatDate = (dateString) => {
+export const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
     year: "numeric",

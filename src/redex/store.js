@@ -14,7 +14,10 @@ import { seriesWords } from "./slices/detailsSlices/kayWordes/sriesKaywordes";
 import { Recommendations } from "./slices/detailsSlices/Recommendations";
 import {collection} from "./slices/detailsSlices/collection";
 import {externalIds}from"./slices/detailsSlices/SocialLinks"
+import { media } from "./slices/detailsSlices/media";
 import {reviews}from "./slices/detailsSlices/Social"
+import { season } from "./slices/detailsSlices/seasons";
+
 
 
 const store = configureStore({
@@ -34,7 +37,9 @@ const store = configureStore({
     Recommendations,
     collection,
     externalIds,
-    reviews
+    media,
+    reviews,
+    season
   },
 });
 

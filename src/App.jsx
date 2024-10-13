@@ -9,8 +9,12 @@ import Footer from './compont/Footer'
 import Details from './padges/Details'
 import Collection from './padges/DetailsPadges/Collection'
 import CastPage from './padges/DetailsPadges/CastPage'
+import Media from './padges/DetailsPadges/Media'
 import ReviewsPage from './padges/DetailsPadges/ReviewsPage';
+import AllSeasons from './padges/DetailsPadges/AllSeasons'
+import SeasonDetails from './padges/DetailsPadges/SeasonDetails'
  
+
 function App() {
   return (
     <div>
@@ -23,7 +27,11 @@ function App() {
           <Route path="/:Subject/:id/:name" element={<Details/> }/>
           <Route path="/collection/:collectionid" element={<Collection/> }/>
           <Route path='/:Subject/:id/:name/cast' element={<CastPage/>}/>
+          <Route path='/media/:SubjectMedia/:idMedia/:nameMedia/:type' element={<Media/>}/>
           <Route path='/:Subject/:id/:name/reviews' element={<ReviewsPage/>}/>
+          <Route path='/:Subject/:id/:name/season' element={<AllSeasons/>}/>
+          <Route path='/:Subject/:id/:name/season/:seasonNumber' element={<SeasonDetails/>}/>
+
 
         </Routes>
 <Footer/>
