@@ -37,9 +37,11 @@ function LastSeasonComponant() {
           >
             <img
               className="rounded-l-lg"
+
               src={`https://image.tmdb.org/t/p/w500${
                 moveDetails?.seasons[moveDetails.seasons.length - 1]
                   ?.poster_path
+
               }`}
             />
           </button>
