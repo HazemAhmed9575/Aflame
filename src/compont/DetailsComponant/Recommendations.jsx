@@ -9,6 +9,7 @@ function Recommendations() {
   const { error, loading, recommend } = useSelector(
     (state) => state.Recommendations
   );
+  console.log(recommend);
   const { Subject, id } = useParams();
   const dispatch = useDispatch(); 
   
@@ -43,7 +44,7 @@ function Recommendations() {
           .filter((data) => data.poster_path) 
           .map((data, index) => (
             <Link
-              to={`/${Subject}/${data.id}/${data.name}`}
+              to={`/${Subject}/${data.id}/${Subject=="movie"?data.title:data.name}`}
               key={index}
               className="w-80 gap-3 inline-flex p-3 m-2 rounded flex-col bg-[#212529]"
             >
