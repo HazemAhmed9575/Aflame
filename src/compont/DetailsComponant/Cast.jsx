@@ -8,6 +8,7 @@ import Loding from "../Loding";
 const Cast = () => {
   const { cast,craditErorr,craditLoding } = useSelector((state) => state.cradit);
   const { Subject, id, name } = useParams();
+  console.log(cast);
   if (craditErorr){
     return <Erorr/>
   }
@@ -23,6 +24,7 @@ const Cast = () => {
       <div className="relative overflow-x-auto whitespace-nowrap flex items-start p-4">
         {cast.slice(0, 10).map((member, index) => (
           <Link
+          to={`/person/${member.id}/hisname/${member.original_name}`}
             key={index}
             className="gapx-3 inline-flex px-2 rounded flex-col h-96 w-56"
           >

@@ -25,6 +25,7 @@ import { getSeasons } from "../redex/slices/detailsSlices/seasons";
 function Details() {
   const { Subject, id } = useParams();
   const { moveDetails } = useSelector((state) => state.details);
+
   const dispatch = useDispatch();
   // belongs_to_collection.id
 
@@ -34,12 +35,10 @@ function Details() {
     dispatch(getDetalis({ Subject, id }));
     dispatch(getVideo({ Subject, id }));
     dispatch(getCredits({ Subject, id }));
-
-    dispatch(gitMoveKeywords({Subject, id }));
-    dispatch(gitSriesKeywords({ Subject, id}));
+    dispatch(gitMoveKeywords({ Subject, id }));
+    dispatch(gitSriesKeywords({ Subject, id }));
     dispatch(getExternalIds({ Subject, id }));
-    dispatch(gitSocial({Subject, id}));
-
+    dispatch(gitSocial({ Subject, id }));
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
@@ -49,7 +48,7 @@ function Details() {
 
       <div className="lg:relative flex flex-col gap-y-12 py-2 lg:md:px-12">
         <Cast />
-{Subject == "tv"&&<LastSeasonComponant/>}
+        {Subject == "tv" && <LastSeasonComponant />}
 
         <Social />
         <MediaComponant />
