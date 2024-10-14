@@ -89,7 +89,7 @@ function AllSeasons() {
                   </div>
                   {/* end div vote */}
                   <h1>
-                    {data.air_date.slice(0, 4)} | {data.episode_count} Episodes
+                    {data.air_date?.slice(0, 4)} | {data.episode_count} Episodes
                   </h1>
                 </div>
                 {/* end div vote& dat */}
