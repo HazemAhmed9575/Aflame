@@ -25,8 +25,6 @@ import { getSeasons } from "../redex/slices/detailsSlices/seasons";
 function Details() {
   const { Subject, id } = useParams();
   const { moveDetails } = useSelector((state) => state.details);
-  console.log("🚀 ~ Details ~ moveDetails:", moveDetails)
-
   const dispatch = useDispatch();
   // belongs_to_collection.id
 
