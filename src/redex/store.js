@@ -17,7 +17,9 @@ import { externalIds } from "./slices/detailsSlices/SocialLinks";
 import { media } from "./slices/detailsSlices/media";
 import { reviews } from "./slices/detailsSlices/Social";
 import { season } from "./slices/detailsSlices/seasons";
-import { actorDetails } from "./slices/detailsSlices/actorSlice";
+import { actorDetails } from "./slices/detailsSlices/actorSlices/actorSlice";
+import {socalLinksReducer}from "./slices/detailsSlices/actorSlices/socalLinksSlice"
+import {actorCredit}from "./slices/detailsSlices/actorSlices/actorCredits"
 
 const store = configureStore({
   reducer: {
@@ -40,6 +42,8 @@ const store = configureStore({
     reviews,
     season,
     actorDetails,
+    socalLinksReducer,
+    actorCredit
   },
 });
 
