@@ -20,10 +20,12 @@ function LastSeasonComponant() {
     );
   } else {
     return (
-      <div className=" w-full lg:w-3/4  flex flex-col gap-y-7 max-h-screen ">
+      <div className="  flex flex-col justify-center  w-full lg:w-3/4 items-center lg:items-start gap-y-12  rounded-lg">
         <h1 className="text-[#0DCAF0] text-3xl font-bold">Last Season</h1>
 
-        <div className="w-full bg-[#212529] flex  rounded-md flex-col md:flex-row justify-center items-center ">
+        <div
+          className=" 
+         bg-[#212529] flex flex-col items-center lg:flex-row lg:items-start lg:w-full  ">
           <button
             onClick={() =>
               navigate(
@@ -33,21 +35,23 @@ function LastSeasonComponant() {
                 }`
               )
             }
-            className="w-1/4 rounded-l-lg"
-          >
+            className="lg:w-1/4  lg:rounded-l-lg">
             <img
-              className="rounded-l-lg"
-
-              src={`https://image.tmdb.org/t/p/w500${
+              className=" rounded-lg  lg:rounded-l-lg"
+              src={
                 moveDetails?.seasons[moveDetails.seasons.length - 1]
-                  ?.poster_path
-
-              }`}
+                  ?.poster_path == null
+                  ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+                  : `https://image.tmdb.org/t/p/w500${
+                      moveDetails?.seasons[moveDetails.seasons.length - 1]
+                        ?.poster_path
+                    }`
+              }
             />
           </button>
 
-          <div className="flex flex-col text-white gap-y-5 py-6 px-3">
-            <div className="flex gap-x-5">
+          <div className="flex flex-col justify-center items-center lg:items-start p-5  text-white gap-y-5 py-6 px-3">
+            <div className="flex flex-col lg:flex-row justify-center gap-y-5 lg:gap-x-5">
               <button
                 onClick={() =>
                   navigate(
@@ -57,8 +61,7 @@ function LastSeasonComponant() {
                     }`
                   )
                 }
-                className="font-extrabold hover:text-gray-400"
-              >
+                className="font-extrabold hover:text-gray-400">
                 {moveDetails.seasons[moveDetails.seasons.length - 1].name}
               </button>
               {/* div vote& dat */}
@@ -86,20 +89,21 @@ function LastSeasonComponant() {
               </div>
               {/* end div vote& dat */}
             </div>
-
-            <h1>
-              {moveDetails.seasons[moveDetails.seasons.length - 1].overview ==
-              ""
-                ? "There is no Overview for this Season"
-                : moveDetails.seasons[moveDetails.seasons.length - 1].overview}
-            </h1>
+            <div className="text-center lg:text-start  w-96 lg:w-full">
+              <h1>
+                {moveDetails.seasons[moveDetails.seasons.length - 1].overview ==
+                ""
+                  ? "There is no Overview for this Season"
+                  : moveDetails.seasons[moveDetails.seasons.length - 1]
+                      .overview}
+              </h1>
+            </div>
           </div>
         </div>
 
         <Link
           to={`/${Subject}/${id}/${name}/season`}
-          className="text-[#0DCAD1] hover:text-[#CAC1A2] p-4"
-        >
+          className="text-[#0DCAD1] hover:text-[#CAC1A2] p-4">
           View All Seasons
         </Link>
       </div>
