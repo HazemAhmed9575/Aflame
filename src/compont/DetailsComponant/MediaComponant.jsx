@@ -30,14 +30,6 @@ function MediaComponant() {
     textPostersMediaComp,
   } = useSelector((state) => state.media);
   const dispatch = useDispatch();
-
-  if (video) {
-    return (
-      <div className="flex justify-center items-center w-full lg:w-3/4 ">
-        <Loding />
-      </div>
-    );
-  }
   if (mediaErorr) {
     <div className="flex justify-center items-center w-full lg:w-3/4 ">
       <Erorr />
@@ -49,6 +41,7 @@ function MediaComponant() {
       <h1 className="text-[#0DCAF0] text-3xl font-bold">Media</h1>
 
       <div>
+        {mediaLoding&&<Loding />}
         <Tabs value="videoes">
           <TabsHeader
             className="bg-transparent  w-auto lg:w-1/2  "
