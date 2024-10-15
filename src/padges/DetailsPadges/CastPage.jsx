@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getCredits } from "../../redex/slices/detailsSlices/cradits";
 import { getDetalis } from "../../redex/slices/detailsSlices/detalis";
 import { HiMiniArrowSmallLeft } from "react-icons/hi2";
@@ -76,7 +76,7 @@ const CastPage = () => {
           </h1>
           <div className="rounded-lg p-4">
             {cast.map(({ name, profile_path, character }, index) => (
-              <div
+              <Link
                 key={index}
                 className="flex flex-col md:flex-row bg-[#212529] items-center mb-4 w-full md:w-96 cursor-pointer"
               >
@@ -93,7 +93,7 @@ const CastPage = () => {
                   <h2 className="text-lg font-semibold">{name}</h2>
                   <p className="text-gray-400">{character}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

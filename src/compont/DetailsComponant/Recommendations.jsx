@@ -9,7 +9,6 @@ function Recommendations() {
   const { error, loading, recommend } = useSelector(
     (state) => state.Recommendations
   );
-  console.log(recommend);
   const { Subject, id } = useParams();
   const dispatch = useDispatch(); 
   

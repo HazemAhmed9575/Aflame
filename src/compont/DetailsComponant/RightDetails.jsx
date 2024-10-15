@@ -8,10 +8,8 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 function RightDetails() {
   const { Subject, id, name } = useParams();
   const { moveDetails } = useSelector((state) => state.details);
-  const { moveWords } = useSelector((state) => state.moveWordes);
-  const { sriesWord } = useSelector((state) => state.seriesWords);
+  const { Words } = useSelector((state) => state.kayWordes);
   const { externalIds } = useSelector((state) => state.externalIds);
-  const words = sriesWord || []; // Set to an empty array if undefined
 
   // (((((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))))
   const sries = (
@@ -79,7 +77,7 @@ function RightDetails() {
         <h1 className="text-[#0DCAF0]">Keywords</h1>
         <div className="flex flex-wrap gap-2">
           {/* Wrap keywords */}
-          {words.map(({ name }, index) => (
+          {Words?.results?.map(({ name }, index) => (
             <button
               key={index}
               className="bg-white text-black rounded-md p-1 text-sm border border-gray-600 transition duration-300 ease-in-out transform hover:bg-[#3F3E3E] hover:text-[#0DCAF0] hover:text-xl hover:scale-105"
@@ -155,7 +153,7 @@ function RightDetails() {
         <div className="flex flex-wrap gap-2">
           {" "}
           {/* Wrap keywords */}
-          {moveWords?.map(({ name }, index) => (
+          {Words?.keywords?.map(({ name }, index) => (
             <button
               key={index}
               className="bg-white text-black rounded-md p-1 text-sm border border-gray-600 transition duration-300 ease-in-out transform hover:bg-[#3F3E3E] hover:text-[#0DCAF0] hover:text-xl hover:scale-105"

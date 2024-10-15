@@ -8,7 +8,6 @@ import Loding from "../Loding";
 const Cast = () => {
   const { cast,craditErorr,craditLoding } = useSelector((state) => state.cradit);
   const { Subject, id, name } = useParams();
-  console.log(cast);
   if (craditErorr){
     return <Erorr/>
   }
