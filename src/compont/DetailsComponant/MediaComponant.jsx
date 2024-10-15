@@ -31,7 +31,7 @@ function MediaComponant() {
   } = useSelector((state) => state.media);
   const dispatch = useDispatch();
 
-  if (mediaLoding) {
+  if (video) {
     return (
       <div className="flex justify-center items-center w-full lg:w-3/4 ">
         <Loding />
@@ -121,7 +121,8 @@ function MediaComponant() {
                 )}
                 {video.length > 6 && (
                   <Link
-                    to={`/media/${Subject}/${id}/${name}/video`}
+                    to={`/${Subject}/${id}/titel/${name}/videos`}
+                    ///:Subject/:id/titel/:name/videos
                     className="  text-white p-4 flex justify-center items-center gap-2 hover:text-[#CAC1A2] ">
                     Show more <FaArrowRightLong />
                   </Link>
@@ -149,7 +150,8 @@ function MediaComponant() {
                 )}
                 {backdropsMidia.length > 6 && (
                   <Link
-                    to={`/media/${Subject}/${id}/${name}/backdrops`}
+                    to={`/${Subject}/${id}/titel/${name}/images/backdrops`}
+                    //:Subject/:id/titel/:name/images/backdrops
                     className="  text-white p-4 flex justify-center items-center gap-2 hover:text-[#CAC1A2] ">
                     Show more <FaArrowRightLong />
                   </Link>
@@ -178,7 +180,8 @@ function MediaComponant() {
                 )}
                 {postersMidia.length > 6 && (
                   <Link
-                    to={`/media/${Subject}/${id}/${name}/posters`}
+                    to={`/${Subject}/${id}/titel/${name}/images/posters`}
+                  //:Subject/:id/titel/:name/images/posters
                     className="  text-white p-4 flex justify-center items-center gap-2 hover:text-[#CAC1A2] ">
                     Show more <FaArrowRightLong />
                   </Link>

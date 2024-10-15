@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import Move_SriesDetails from "../compont/DetailsComponant/Move_SriesDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Erorr from "../compont/Erorr";
-import Loding from "../compont/Loding";
 import RightDetails from "../compont/DetailsComponant/RightDetails";
 import { getDetalis } from "../redex/slices/detailsSlices/detalis";
 import { getVideo } from "../redex/slices/detailsSlices/video";
@@ -13,11 +11,10 @@ import Recommendations from "../compont/DetailsComponant/Recommendations";
 import { getExternalIds } from "../redex/slices/detailsSlices/SocialLinks";
 import Cast from "../compont/DetailsComponant/Cast";
 import MediaComponant from "../compont/DetailsComponant/MediaComponant";
-import { getMedia, textVideo } from "../redex/slices/detailsSlices/media";
+import { getMedia } from "../redex/slices/detailsSlices/media";
 import Social from "../compont/DetailsComponant/Social";
 import { gitSocial } from "../redex/slices/detailsSlices/Social";
 import LastSeasonComponant from "../compont/DetailsComponant/LastSeasonComponant";
-import { getSeasons } from "../redex/slices/detailsSlices/seasons";
 import { gitKeywords } from "../redex/slices/detailsSlices/kayWords";
 
 function Details() {
@@ -35,7 +32,8 @@ function Details() {
     dispatch(getCredits({ Subject, id }));
     dispatch(getExternalIds({ Subject, id }));
     dispatch(gitSocial({ Subject, id }));
-    dispatch(gitKeywords({ Subject, id }))
+    dispatch(gitKeywords({ Subject, id }));
+    dispatch(getMedia({ Subject, id }));
   }, [dispatch, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
