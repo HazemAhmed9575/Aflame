@@ -19,7 +19,8 @@ import Erorr from "../Erorr";
 
 function MediaComponant() {
   const { Subject, id, name } = useParams();
-  const { video } = useSelector((state) => state.videos);
+  const { video} = useSelector((state) => state.videos);
+
   const {
     postersMidia,
     backdropsMidia,
@@ -29,6 +30,7 @@ function MediaComponant() {
     textBackdrobMediaComp,
     textPostersMediaComp,
   } = useSelector((state) => state.media);
+
   const dispatch = useDispatch();
 
   if (mediaLoding) {
@@ -130,7 +132,7 @@ function MediaComponant() {
             )}
             {/* end video  */}
             {/* backdrops */}
-            {backdropsMidia.length == 0 ? (
+            {backdropsMidia?.length == 0 ? (
               <TabPanel className="gap-x-4 inline-flex  " value={"backdrops"}>
                 <h1>No Backdrops have been added.</h1>
               </TabPanel>
@@ -138,7 +140,7 @@ function MediaComponant() {
               <TabPanel
                 className="gap-x-4 inline-flex overflow-x-auto overflow-y-hidden whitespace-nowrap "
                 value={"backdrops"}>
-                {backdropsMidia.map(
+                {backdropsMidia?.map(
                   (data, index) =>
                     index < 6 && (
                       <img
