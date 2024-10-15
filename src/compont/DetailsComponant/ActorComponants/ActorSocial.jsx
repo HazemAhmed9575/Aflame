@@ -13,14 +13,17 @@ import { Link } from "react-router-dom";
 const ActorSocial = () => {
   const { actor } = useSelector((state) => state.actorDetails);
   const { socialLinks } = useSelector((state) => state.socalLinksReducer);
-  const { Credit } = useSelector((state) => state.actorCredit);
 
   return (
     <div className="flex flex-col w-full sm:w-1/2 md:w-1/3 px-4">
       {/* Image Section */}
       <div className="flex justify-center md:justify-start h-full">
         <img
-          src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+          src={
+            actor.profile_path
+              ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+              : "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
+          }
           alt={actor.name}
           className="h-auto w-full sm:w-96 rounded-md object-cover"
         />
@@ -88,21 +91,31 @@ const ActorSocial = () => {
 
           <div className="gap-4">
             <h1 className="text-white text-xl">Birthday</h1>
-            <p className="text-[#0DCAF0]">{actor.birthday}</p>
+            <p className="text-[#0DCAF0]">
+              {actor.birthday ? actor.birthday : "Sorry, there is no birthday"}
+            </p>
           </div>
 
           <div className="gap-4">
             <h1 className="text-white text-xl">Place of Birth</h1>
-            <p className="text-[#0DCAF0]">{actor.place_of_birth}</p>
+            <p className="text-[#0DCAF0]">
+              {actor.place_of_birth
+                ? actor.place_of_birth
+                : "Sorry, there is no place of birth"}
+            </p>
           </div>
 
           <div className="gap-4">
             <h1 className="text-white text-xl">Also Known As</h1>
-            {actor?.also_known_as?.map((word, index) => (
-              <p key={index} className="text-[#0DCAF0]">
-                {word}
-              </p>
-            ))}
+            {actor?.also_known_as && actor.also_known_as.length > 0 ? (
+              actor.also_known_as.map((word, index) => (
+                <p key={index} className="text-[#0DCAF0]">
+                  {word}
+                </p>
+              ))
+            ) : (
+              <p className="text-[#0DCAF0]">Sorry, there is no known </p>
+            )}
           </div>
         </div>
       </div>

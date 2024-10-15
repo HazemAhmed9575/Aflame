@@ -13,9 +13,18 @@ const ActorInformation = () => {
 
       {/* Biography Section */}
       <div className="w-full">
-        <h2 className="text-cyan-400 text-2xl font-semibold mb-4">Biography</h2>
+        <h2 className="text-[#0DCAF0] text-2xl font-semibold mb-4">
+          Biography
+        </h2>
         <p className="text-white text-base leading-relaxed">
-          {actor.biography || "No biography available."}
+          {actor.biography ? (
+            actor.biography
+          ) : (
+            <span>
+              We don't have a biography for{" "}
+              <span className="text-[#0DCAF0]">{actor.name}</span>
+            </span>
+          )}
         </p>
       </div>
     </div>
