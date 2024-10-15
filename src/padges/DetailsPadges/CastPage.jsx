@@ -27,6 +27,7 @@ const CastPage = () => {
   const { moveDetails, detailsLoading, detailsError } = useSelector(
     (state) => state.details
   );
+  console.log(crew);
 
   const { Subject, id } = useParams();
   const dispatch = useDispatch();
@@ -75,8 +76,9 @@ const CastPage = () => {
             Cast <span className="text-[#0DBDBB]">{cast.length}</span>
           </h1>
           <div className="rounded-lg p-4">
-            {cast.map(({ name, profile_path, character }, index) => (
+            {cast.map(({ name, profile_path, character, id }, index) => (
               <Link
+              to={`/person/${id}/hisname/${name}`}
                 key={index}
                 className="flex flex-col md:flex-row bg-[#212529] items-center mb-4 w-full md:w-96 cursor-pointer"
               >
@@ -119,8 +121,9 @@ const CastPage = () => {
             .map(({ label, data }) => (
               <div key={label} className="mb-6">
                 <h2 className="text-4xl mb-4 text-[#0DBDBB]">{label}</h2>
-                {data.map(({ name, profile_path, job }, index) => (
-                  <div
+                {data.map(({ name, profile_path, job,id }, index) => (
+                  <Link
+                  to={`/person/${id}/hisname/${name}`}
                     key={index}
                     className="flex bg-[#212529] items-center mb-4 w-full md:w-96"
                   >
@@ -137,7 +140,7 @@ const CastPage = () => {
                       <h2 className="text-lg font-semibold">{name}</h2>
                       <p className="text-gray-400">{job}</p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             ))}
