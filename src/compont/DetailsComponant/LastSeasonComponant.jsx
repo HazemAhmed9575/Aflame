@@ -37,13 +37,14 @@ function LastSeasonComponant() {
             }
             className="lg:w-1/4  lg:rounded-l-lg">
             <img
+
               className=" rounded-lg  lg:rounded-l-lg"
               src={
                 moveDetails?.seasons[moveDetails.seasons.length - 1]
                   ?.poster_path == null
                   ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
                   : `https://image.tmdb.org/t/p/w500${
-                      moveDetails?.seasons[moveDetails.seasons.length - 1]
+                      moveDetails?.seasons[moveDetails?.seasons?.length - 1]
                         ?.poster_path
                     }`
               }
@@ -112,3 +113,7 @@ function LastSeasonComponant() {
 }
 
 export default LastSeasonComponant;
+
+
+
+

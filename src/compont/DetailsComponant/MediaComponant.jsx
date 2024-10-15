@@ -19,7 +19,7 @@ import Erorr from "../Erorr";
 
 function MediaComponant() {
   const { Subject, id, name } = useParams();
-  const { video } = useSelector((state) => state.videos);
+  const { video,videoArranged } = useSelector((state) => state.videos);
   const {
     postersMidia,
     backdropsMidia,
@@ -35,6 +35,7 @@ function MediaComponant() {
       <Erorr />
     </div>;
   }
+  console.log(videoArranged);
 
   return (
     <div className="text-white w-full lg:w-3/4  flex flex-col gap-y-7 max-h-screen">
