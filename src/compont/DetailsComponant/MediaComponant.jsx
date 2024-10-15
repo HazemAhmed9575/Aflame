@@ -19,7 +19,8 @@ import Erorr from "../Erorr";
 
 function MediaComponant() {
   const { Subject, id, name } = useParams();
-  const { video} = useSelector((state) => state.videos);
+
+  const { video,videoArranged } = useSelector((state) => state.videos);
 
   const {
     postersMidia,
@@ -32,25 +33,19 @@ function MediaComponant() {
   } = useSelector((state) => state.media);
 
   const dispatch = useDispatch();
-
-  if (mediaLoding) {
-    return (
-      <div className="flex justify-center items-center w-full lg:w-3/4 ">
-        <Loding />
-      </div>
-    );
-  }
   if (mediaErorr) {
     <div className="flex justify-center items-center w-full lg:w-3/4 ">
       <Erorr />
     </div>;
   }
+  console.log(videoArranged);
 
   return (
     <div className="text-white w-full lg:w-3/4  flex flex-col gap-y-7 max-h-screen">
       <h1 className="text-[#0DCAF0] text-3xl font-bold">Media</h1>
 
       <div>
+        {mediaLoding&&<Loding />}
         <Tabs value="videoes">
           <TabsHeader
             className="bg-transparent  w-auto lg:w-1/2  "
@@ -123,7 +118,8 @@ function MediaComponant() {
                 )}
                 {video.length > 6 && (
                   <Link
-                    to={`/media/${Subject}/${id}/${name}/video`}
+                    to={`/${Subject}/${id}/titel/${name}/videos`}
+                    ///:Subject/:id/titel/:name/videos
                     className="  text-white p-4 flex justify-center items-center gap-2 hover:text-[#CAC1A2] ">
                     Show more <FaArrowRightLong />
                   </Link>
@@ -151,7 +147,8 @@ function MediaComponant() {
                 )}
                 {backdropsMidia.length > 6 && (
                   <Link
-                    to={`/media/${Subject}/${id}/${name}/backdrops`}
+                    to={`/${Subject}/${id}/titel/${name}/images/backdrops`}
+                    //:Subject/:id/titel/:name/images/backdrops
                     className="  text-white p-4 flex justify-center items-center gap-2 hover:text-[#CAC1A2] ">
                     Show more <FaArrowRightLong />
                   </Link>
@@ -180,7 +177,8 @@ function MediaComponant() {
                 )}
                 {postersMidia.length > 6 && (
                   <Link
-                    to={`/media/${Subject}/${id}/${name}/posters`}
+                    to={`/${Subject}/${id}/titel/${name}/images/posters`}
+                  //:Subject/:id/titel/:name/images/posters
                     className="  text-white p-4 flex justify-center items-center gap-2 hover:text-[#CAC1A2] ">
                     Show more <FaArrowRightLong />
                   </Link>
