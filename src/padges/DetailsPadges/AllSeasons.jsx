@@ -33,7 +33,11 @@ function AllSeasons() {
     <div className="flex flex-col  gap-y-5">
       <div className="flex flex-col md:flex-row items-center p-4 bg-[#212529]">
         <img
-          src={moveDetails?.poster_path == null?"https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg": `https://image.tmdb.org/t/p/w500${moveDetails?.poster_path}`}
+          src={
+            moveDetails?.poster_path == null
+              ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+              : `https://image.tmdb.org/t/p/w500${moveDetails?.poster_path}`
+          }
           alt={moveDetails?.original_title}
           className="rounded-lg shadow-lg w-20 md:w-40 mb-4"
         />
@@ -57,7 +61,7 @@ function AllSeasons() {
           <div
             key={index}
             className="  bg-[#212529] flex flex-col lg:w-full lg:flex-row rounded-md">
-            <button className=" lg:w-1/6  rounded-l-lg">
+            <button className=" lg:w-1/6 rounded-lg  lg:rounded-l-lg">
               <img
                 onClick={() =>
                   navigate(
@@ -65,7 +69,11 @@ function AllSeasons() {
                   )
                 }
                 className="rounded-l-lg"
-                src={ data.poster_path==null?"https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg":`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                src={
+                  data.poster_path == null
+                    ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+                    : `https://image.tmdb.org/t/p/w500${data.poster_path}`
+                }
               />
             </button>
 
