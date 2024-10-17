@@ -15,7 +15,6 @@ const VideosPage = () => {
       ? moveDetails?.release_date?.slice(0, 4)
       : moveDetails?.first_air_date?.slice(0, 4);
   const dispatch = useDispatch();
-console.log(videoArranged);
   useEffect(() => {
     dispatch(getVideo({ Subject, id }));
     dispatch(getDetalis({ Subject, id }));
@@ -25,7 +24,7 @@ console.log(videoArranged);
   const videoCategories = Object.keys(videoArranged);
 
   return (
-    <div className="bg-black min-h-screen">
+    <div >
       {/* Header with Title and Back Button */}
       <div className="flex flex-col md:flex-row items-center p-4 bg-[#212529] text-white">
         <img
