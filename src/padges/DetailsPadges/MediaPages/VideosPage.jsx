@@ -65,7 +65,7 @@ const VideosPage = () => {
           </button>
           <div
             ref={container}
-            className="inline-flex gap-x-8 overflow-x-auto justify-center whitespace-nowrap w-full scrollbar-hide scroll-smooth"
+            className="inline-flex gap-x-8  overflow-auto md:justify-center whitespace-nowrap w-full scrollbar-hide scroll-smooth"
             // Enable touch-based horizontal scrolling
           >
             {videoCategories.map((category) => (
@@ -84,7 +84,7 @@ const VideosPage = () => {
           </div>
           <button
             onClick={() => scroll(200)}
-            className="text-2xl text-white float-right md:hidden"
+            className="text-2xl text-white  md:hidden"
           >
             <FaAngleRight />
           </button>
