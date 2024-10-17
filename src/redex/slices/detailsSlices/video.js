@@ -56,6 +56,7 @@ const videoSlice = createSlice({
         state.videoLoading = true;
       })
       .addCase(getVideo.fulfilled, (state, { payload }) => {
+
         state.videoLoading = false;
         state.video = payload;
         state.videoArranged = state.video.reduce((acc, item) => {

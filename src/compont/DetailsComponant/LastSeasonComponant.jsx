@@ -30,8 +30,7 @@ function LastSeasonComponant() {
             onClick={() =>
               navigate(
                 `/${Subject}/${id}/${name}/season/${
-                  moveDetails?.seasons[moveDetails.seasons.length - 1]
-                    .season_number
+                  moveDetails?.seasons[moveDetails.seasons.length - 1]?.season_number
                 }`
               )
             }
@@ -40,7 +39,7 @@ function LastSeasonComponant() {
 
               className=" rounded-lg  lg:rounded-l-lg"
               src={
-                moveDetails?.seasons[moveDetails.seasons.length - 1]
+                moveDetails?.seasons[moveDetails?.seasons?.length - 1]
                   ?.poster_path == null
                   ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
                   : `https://image.tmdb.org/t/p/w500${
@@ -58,12 +57,12 @@ function LastSeasonComponant() {
                   navigate(
                     `/${Subject}/${id}/${name}/season/${
                       moveDetails?.seasons[moveDetails.seasons.length - 1]
-                        .season_number
+                        ?.season_number
                     }`
                   )
                 }
                 className="font-extrabold hover:text-gray-400">
-                {moveDetails.seasons[moveDetails.seasons.length - 1].name}
+                {moveDetails.seasons[moveDetails.seasons.length - 1]?.name}
               </button>
               {/* div vote& dat */}
               <div className="flex gap-x-3 items-center font-bold font-sans ">
@@ -72,7 +71,7 @@ function LastSeasonComponant() {
                   <MdStar />
                   {
                     moveDetails.seasons[moveDetails.seasons.length - 1]
-                      .vote_average
+                      ?.vote_average
                   }
                 </div>
                 {/* end div vote */}
