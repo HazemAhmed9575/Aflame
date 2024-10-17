@@ -4,7 +4,8 @@ import { getVideo } from "../../../redex/slices/detailsSlices/video";
 import { useParams } from "react-router-dom";
 import { getDetalis } from "../../../redex/slices/detailsSlices/detalis";
 import { HiMiniArrowSmallLeft } from "react-icons/hi2";
-import { FaAngleLeft,FaAngleRight  } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+
 const VideosPage = () => {
   // Access videoArranged from Redux
   const { videoArranged } = useSelector((state) => state.videos);
@@ -15,21 +16,18 @@ const VideosPage = () => {
       ? moveDetails?.release_date?.slice(0, 4)
       : moveDetails?.first_air_date?.slice(0, 4);
   const dispatch = useDispatch();
-console.log(videoArranged);
+  console.log(videoArranged);
   useEffect(() => {
     dispatch(getVideo({ Subject, id }));
     dispatch(getDetalis({ Subject, id }));
   }, [id]);
-
-  const [selectedCategory, setSelectedCategory] = useState("Trailer");
-  const videoCategories = Object.keys(videoArranged);
-
-
-  const container = useRef(null)
+  const container = useRef(null);
 
   const scroll = (scrollOffset) => {
-          container.current.scrollLeft += scrollOffset;
-    };
+    container.current.scrollLeft += scrollOffset;
+  };
+  const [selectedCategory, setSelectedCategory] = useState("Trailer");
+  const videoCategories = Object.keys(videoArranged);
 
   return (
     <div className="bg-black min-h-screen">
@@ -58,31 +56,39 @@ console.log(videoArranged);
         {" "}
         {/* Social Section */}
         <div className="text-[#0DCAF0] text-3xl p-8">Social</div>
-        <div className="flex gap-x-3 justify-center items-center w-full">
-        <button onClick={()=>scroll(-20)} className="text-2xl md:hidden text-white"><FaAngleLeft /> </button>
-        <div ref={container} className="inline-flex gap-x-8 justify-center  overflow-x-hidden overflow-y-hidden whitespace-nowrap w-full ">
-
-
-          {videoCategories.map((category) => (
-            <button
-            key={category}
-            className={`text-xl   flex justify-evenly ${
-              selectedCategory === category
-              ? "text-purple-400 border-b-2 border-purple-400"
-              : "text-gray-300"
-              }`}
-              onClick={() => setSelectedCategory(category)}
+        <div className="flex justify-center space-x-8 mb-4  w-full">
+          <button
+            onClick={() => scroll(-200)}
+            className="text-2xl text-white md:hidden"
+          >
+            <FaAngleLeft />
+          </button>
+          <div
+            ref={container}
+            className="inline-flex gap-x-8 overflow-x-auto justify-center whitespace-nowrap w-full scrollbar-hide scroll-smooth"
+            // Enable touch-based horizontal scrolling
+          >
+            {videoCategories.map((category) => (
+              <button
+                key={category}
+                className={`text-xl   flex justify-evenly ${
+                  selectedCategory === category
+                    ? "text-purple-400 border-b-2 border-purple-400"
+                    : "text-gray-300"
+                }`}
+                onClick={() => setSelectedCategory(category)}
               >
-              {category} ({videoArranged[category].length})
-            </button>
-          ))}
-
-
-        </div >
-<button onClick={()=>scroll(20)} className="text-2xl text-white float-right md:hidden"  ><FaAngleRight /></button>
+                {category} ({videoArranged[category].length})
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => scroll(200)}
+            className="text-2xl text-white float-right md:hidden"
+          >
+            <FaAngleRight />
+          </button>
         </div>
-
-      
         {/* Video Grid */}
         <div className="flex flex-col w-full gap-4 p-8 py-4 bg-[#212529] rounded-lg ">
           {videoArranged[selectedCategory]?.map((video) => (
