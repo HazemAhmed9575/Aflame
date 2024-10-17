@@ -8,6 +8,7 @@ function LastSeasonComponant() {
   const { moveDetails, detailsLoading, detailsError } = useSelector(
     (state) => state.details
   );
+  console.log(moveDetails);
   const navigate = useNavigate();
 
   if (detailsError) {
@@ -25,22 +26,23 @@ function LastSeasonComponant() {
 
         <div
           className=" 
-         bg-[#212529] flex flex-col items-center lg:flex-row lg:items-start lg:w-full  ">
+         bg-[#212529] flex flex-col items-center lg:flex-row lg:items-start lg:w-full  "
+        >
           <button
             onClick={() =>
               navigate(
                 `/${Subject}/${id}/${name}/season/${
-                  moveDetails?.seasons[moveDetails.seasons.length - 1]?.season_number
+                  moveDetails?.seasons[moveDetails.seasons.length - 1]
+                    ?.season_number
                 }`
               )
             }
-            className="lg:w-1/4  lg:rounded-l-lg">
+            className="lg:w-1/4  lg:rounded-l-lg"
+          >
             <img
-
               className=" rounded-lg  lg:rounded-l-lg"
               src={
-                moveDetails?.seasons[moveDetails?.seasons?.length - 1]
-                  ?.poster_path == null
+                moveDetails?.seasons[moveDetails?.seasons?.length - 1]?.poster_path == null
                   ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
                   : `https://image.tmdb.org/t/p/w500${
                       moveDetails?.seasons[moveDetails?.seasons?.length - 1]
@@ -61,7 +63,8 @@ function LastSeasonComponant() {
                     }`
                   )
                 }
-                className="font-extrabold hover:text-gray-400">
+                className="font-extrabold hover:text-gray-400"
+              >
                 {moveDetails.seasons[moveDetails.seasons.length - 1]?.name}
               </button>
               {/* div vote& dat */}
@@ -76,12 +79,12 @@ function LastSeasonComponant() {
                 </div>
                 {/* end div vote */}
                 <h1>
-                  {moveDetails.seasons[
-                    moveDetails.seasons.length - 1
-                  ].air_date.slice(0, 4)}{" "}
+                  {moveDetails?.seasons[
+                    moveDetails?.seasons?.length - 1
+                  ].air_date?.slice(0, 4)}{" "}
                   |{" "}
                   {
-                    moveDetails?.seasons[moveDetails.seasons.length - 1]
+                    moveDetails?.seasons[moveDetails?.seasons?.length - 1]
                       .episode_count
                   }{" "}
                   Episodes
@@ -91,11 +94,11 @@ function LastSeasonComponant() {
             </div>
             <div className="text-center lg:text-start  w-96 lg:w-full">
               <h1>
-                {moveDetails.seasons[moveDetails.seasons.length - 1].overview ==
-                ""
+                {moveDetails?.seasons[moveDetails?.seasons?.length - 1]
+                  ?.overview == ""
                   ? "There is no Overview for this Season"
-                  : moveDetails.seasons[moveDetails.seasons.length - 1]
-                      .overview}
+                  : moveDetails?.seasons[moveDetails?.seasons?.length - 1]
+                      ?.overview}
               </h1>
             </div>
           </div>
@@ -103,7 +106,8 @@ function LastSeasonComponant() {
 
         <Link
           to={`/${Subject}/${id}/${name}/season`}
-          className="text-[#0DCAD1] hover:text-[#CAC1A2] p-4">
+          className="text-[#0DCAD1] hover:text-[#CAC1A2] p-4"
+        >
           View All Seasons
         </Link>
       </div>
@@ -112,7 +116,3 @@ function LastSeasonComponant() {
 }
 
 export default LastSeasonComponant;
-
-
-
-

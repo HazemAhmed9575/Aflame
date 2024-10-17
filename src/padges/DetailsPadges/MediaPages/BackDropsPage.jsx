@@ -4,14 +4,12 @@ import { useParams } from "react-router-dom";
 import { getMedia } from "../../../redex/slices/detailsSlices/media";
 import { getDetalis } from "../../../redex/slices/detailsSlices/detalis";
 import { HiMiniArrowSmallLeft } from "react-icons/hi2";
-import { FaAngleLeft, FaAngleRight, FaLock } from "react-icons/fa6";
-import { FaWindowClose } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const BackDropsPage = () => {
   const { backdropsMidiaArranged } = useSelector((state) => state.media);
   const { Subject, id } = useParams();
   const dispatch = useDispatch();
-  console.log(backdropsMidiaArranged);
   useEffect(() => {
     dispatch(getMedia({ Subject, id }));
     dispatch(getDetalis({ Subject, id }));
@@ -21,8 +19,11 @@ const BackDropsPage = () => {
     Subject === "movie"
       ? moveDetails?.release_date?.slice(0, 4)
       : moveDetails?.first_air_date?.slice(0, 4);
-  const [selectedCategory, setSelectedCategory] = useState("No Language"); // Initial state should be empty or first category
   const backdropsCategories = Object.keys(backdropsMidiaArranged);
+  const initialCategory = backdropsCategories[0] || "No Language";
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  console.log(backdropsCategories[0]); // This will log the selected category or null if no categories exist
+
   const container = useRef(null);
 
   const scroll = (scrollOffset) => {
@@ -85,10 +86,7 @@ const BackDropsPage = () => {
         {/* Posters Grid */}
         <div className="flex flex-wrap justify-evenly items-center gap-4 p-8 py-4 bg-[#212529] rounded-lg">
           {backdropsMidiaArranged[selectedCategory]?.map((backdrops, index) => (
-            <div
-              key={index}
-              className=" rounded-lg  p-4 "
-            >
+            <div key={index} className=" rounded-lg  p-4 ">
               {/* Image Section */}
               <div className="relative mb-4">
                 <img
