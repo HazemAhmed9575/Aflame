@@ -26,9 +26,10 @@ const VideosPage = () => {
   const scroll = (scrollOffset) => {
     container.current.scrollLeft += scrollOffset;
   };
+  const videoCategories = Object.keys(videoArranged);
+
   const initialCategory = videoCategories[0] || "No Language";
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  const videoCategories = Object.keys(videoArranged);
 
   return (
     <div className="bg-black min-h-screen">
