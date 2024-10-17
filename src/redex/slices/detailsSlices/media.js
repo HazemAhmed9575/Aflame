@@ -4,13 +4,13 @@ import axios from "axios";
 // Helper function to convert ISO 639-1 codes to language names
 const getLanguageName = (isoCode) => {
   if (!isoCode || typeof isoCode !== "string") {
-    return "No LANGUAGE"; // Fallback for invalid or missing ISO codes
+    return "No Language"; // Fallback for invalid or missing ISO codes
   }
   try {
     const displayNames = new Intl.DisplayNames(["en"], { type: "language" });
-    return displayNames.of(isoCode) || "No LANGUAGE"; // Fallback to 'No LANGUAGE' if no match found
+    return displayNames.of(isoCode) || "No Language"; // Fallback to 'No LANGUAGE' if no match found
   } catch (error) {
-    return "No LANGUAGE"; // Handle potential errors
+    return "No Language"; // Handle potential errors
   }
 };
 
