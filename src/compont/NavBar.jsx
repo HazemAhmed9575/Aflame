@@ -8,18 +8,24 @@ import {
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { gitTVShows } from "../redex/slices/search";
 
 function NavBar() {
   const [openNav, setOpenNav] = useState(false);
   const [search, setSearch] = useState("");
+  console.log(search);
   const [searchpath, setSearchpath] = useState("serachSeries");
-
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.search);
+  console.log(data);
   useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
-  }, []);
+    dispatch(gitTVShows({ search, searchpath }));
+  }, [search]);
   // navList Home, Movies , Series , Cpntact Us
   const navList = (
     <div className="mb-4 mt-2  flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -27,28 +33,32 @@ function NavBar() {
         as={NavLink}
         to={"/"}
         variant="small"
-        className="p-1 font-medium text-base  hover:text-gray-400">
+        className="p-1 font-medium text-base  hover:text-gray-400"
+      >
         Home
       </Typography>
       <Typography
         as={NavLink}
         to={"/move"}
         variant="small"
-        className="p-1 font-medium text-base  hover:text-gray-400 ">
+        className="p-1 font-medium text-base  hover:text-gray-400 "
+      >
         Movies
       </Typography>
       <Typography
         as={NavLink}
         to={"/series"}
         variant="small"
-        className="p-1 font-medium text-base  hover:text-gray-400 ">
+        className="p-1 font-medium text-base  hover:text-gray-400 "
+      >
         Series
       </Typography>
       <Typography
         as={NavLink}
         to={"/contacus"}
         variant="small"
-        className="p-1 font-medium text-base  hover:text-gray-400 ">
+        className="p-1 font-medium text-base  hover:text-gray-400 "
+      >
         Contact Us
       </Typography>
     </div>
@@ -59,10 +69,7 @@ function NavBar() {
       <div className=" w-full flex flex-wrap items-center justify-around font-mono ">
         {/* navList and  Redux Movies */}
         <div className=" flex gap-x-5">
-          <Link
-            to="/"
-            href="#"
-            className="font-medium text-white text-xl">
+          <Link to="/" href="#" className="font-medium text-white text-xl">
             Redux Movies
           </Link>
 
@@ -83,7 +90,8 @@ function NavBar() {
           <button
             className={`py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white ${
               search == "" && "pointer-events-none"
-            }`}>
+            }`}
+          >
             Search
           </button>
           <button
@@ -96,7 +104,8 @@ function NavBar() {
               searchpath == "serachSeries"
                 ? "text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]"
                 : "text-blue-700 border-2 rounded-md border-blue-700 hover:bg-blue-700 hover:text-white"
-            }`}>
+            }`}
+          >
             {searchpath}
           </button>
           <button className="py-1.5 px-3 text-base font-bold text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black ">
@@ -108,7 +117,8 @@ function NavBar() {
         <IconButton
           variant="text"
           className="lg:hidden text-gray-500  border-2 border-gray-700  "
-          onClick={() => setOpenNav(!openNav)}>
+          onClick={() => setOpenNav(!openNav)}
+        >
           {openNav ? (
             <XMarkIcon className="h-6 w-6" />
           ) : (
@@ -125,7 +135,8 @@ function NavBar() {
               <Input
                 type="search"
                 placeholder="Search with movies"
-                className=" placeholder:text-black   bg-white" />
+                className=" placeholder:text-black   bg-white"
+              />
             </div>
             <button className="py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white">
               Search
