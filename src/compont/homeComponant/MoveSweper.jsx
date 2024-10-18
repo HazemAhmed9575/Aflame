@@ -54,12 +54,14 @@ const MoveSweper = () => {
             slidesPerView: 4, // Show 4 slides for very large screens
             spaceBetween: 30, // Space between slides
           },
-        }}>
+        }}
+      >
         {photosSweper.map((photo) => (
           <SwiperSlide key={photo.id}>
             <div
               className="slide-content"
-              onClick={() => navigate(`/movie/${photo.id}/${photo.title}`)}>
+              onClick={() => navigate(`/movie/${photo.id}/${photo.title}`)}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w500${photo.poster_path}`}
                 alt={photo.title}
