@@ -14,17 +14,14 @@ import { gitTVShows } from "../redex/slices/search";
 function NavBar() {
   const [openNav, setOpenNav] = useState(false);
   const [search, setSearch] = useState("");
-  console.log(search);
   const [searchpath, setSearchpath] = useState("serachSeries");
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.search);
-  console.log(data);
   useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
-    dispatch(gitTVShows({ search, searchpath }));
   }, [search]);
   // navList Home, Movies , Series , Cpntact Us
   const navList = (
