@@ -8,7 +8,6 @@ function LastSeasonComponant() {
   const { moveDetails, detailsLoading, detailsError } = useSelector(
     (state) => state.details
   );
-  console.log(moveDetails);
   const navigate = useNavigate();
 
   if (detailsError) {
@@ -21,7 +20,7 @@ function LastSeasonComponant() {
     );
   } else {
     return (
-      <div className="  flex flex-col justify-center  w-full lg:w-3/4 items-center lg:items-start gap-y-12  rounded-lg">
+      <div className="  flex flex-col justify-center lg:p-0 p-5 w-full lg:w-3/4 items-center lg:items-start gap-y-12  rounded-lg">
         <h1 className="text-[#0DCAF0] text-3xl font-bold">Last Season</h1>
 
         <div
@@ -40,7 +39,7 @@ function LastSeasonComponant() {
             className="lg:w-1/4  lg:rounded-l-lg"
           >
             <img
-              className=" rounded-lg  lg:rounded-l-lg"
+              className=" rounded-lg   lg:rounded-l-lg"
               src={
                 moveDetails?.seasons[moveDetails?.seasons?.length - 1]?.poster_path == null
                   ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
@@ -92,7 +91,7 @@ function LastSeasonComponant() {
               </div>
               {/* end div vote& dat */}
             </div>
-            <div className="text-center lg:text-start  w-96 lg:w-full">
+            <div className="flex justify-center items-center max-w-52 lg:max-w-full lg:text-start ">
               <h1>
                 {moveDetails?.seasons[moveDetails?.seasons?.length - 1]
                   ?.overview == ""

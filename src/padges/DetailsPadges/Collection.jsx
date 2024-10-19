@@ -25,6 +25,7 @@ function Collection() {
       ? `url("https://image.tmdb.org/t/p/w500${dataCollection.backdrop_path}")`
       : "none",
   };
+  console.log(dataCollection.poster_path);
 
   // ___________________________________________________________
   if (collectionLoading) {
@@ -44,14 +45,14 @@ function Collection() {
         {/* Poster Image */}
         <div className="flex justify-end items-center w-1/4">
           <div className="w-4/5">
-            {dataCollection.poster_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w500${dataCollection.poster_path}`}
-                alt="Poster"
-              />
-            ) : (
-              <div className="text-white">No Image Available</div>
-            )}
+            <img
+              src={
+                dataCollection.poster_path == null
+                  ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+                  : `https://image.tmdb.org/t/p/w500${dataCollection.poster_path}`
+              }
+              alt="Poster"
+            />
           </div>
         </div>
 
@@ -106,7 +107,11 @@ function Collection() {
                   className="bg-[#212529]  rounded-lg flex items-center gap-x-2">
                   <div className="w-1/6 h-full ">
                     <img
-                      src={`https://image.tmdb.org/t/p/w500${data.profile_path}`}
+                      src={
+                        data.profile_path == null
+                          ? "https://ionicframework.com/docs/img/demos/avatar.svg"
+                          : `https://image.tmdb.org/t/p/w500${data.profile_path}`
+                      }
                       className="w-full h-full rounded-l-lg"
                       alt=""
                     />
@@ -170,7 +175,11 @@ function Collection() {
                 onClick={() => navigate(`/movie/${data.id}/${data.title}`)}
                 className="lg:w-1/12 h-full  ">
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                  src={
+                    data.poster_path == null
+                      ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+                      : `https://image.tmdb.org/t/p/w500${data.poster_path}`
+                  }
                   className="w-full h-full rounded-lg lg:rounded-l-lg"
                   alt=""
                 />

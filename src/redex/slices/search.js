@@ -9,13 +9,12 @@ export const gitTVShows = createAsyncThunk(
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/${
-          searchpath === "searchSeries" ? "tv" : "movie"
+          searchpath == "searchSeries" ? "tv" : "movie"
         }`,
         {
           params: {
             query: search, // The argument passed from dispatch is `search`, which is renamed as `query` in the params
             include_adult: "false",
-            language: "en-US",
             page: "1",
           },
           headers: {

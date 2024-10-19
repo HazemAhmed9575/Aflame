@@ -13,7 +13,6 @@ const Posters = () => {
   const { moveDetails } = useSelector((state) => state.details);
   const { Subject, id } = useParams();
   const dispatch = useDispatch();
-  console.log(postersMidiaArranged);
   const releaseYear =
     Subject === "movie"
       ? moveDetails?.release_date?.slice(0, 4)
