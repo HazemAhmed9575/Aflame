@@ -89,7 +89,6 @@ function Move() {
               />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">TITLE: {move.title}</div>
-                <p className="text-gray-400 text-base"> OVERVIEW: {move.overview.slice(0,10)} </p>
                 <div className="flex items-center justify-between">
                 <p className="text-gray-400 text-base">RATING: {move.vote_average}</p>
                   <ReactStars

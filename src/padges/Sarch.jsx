@@ -48,9 +48,6 @@ function Sarch() {
               <p className="font-bold text-xl mb-2">
                 TITLE: {searchCategore == "movie" ? data.title : data.name}
               </p>
-              <p className="text-gray-400 text-base">
-                OVERVIEW: {data.overview.slice(0, 10)}...{" "}
-              </p>
               <div className="flex items-center justify-between">
                 <p>RATE :{data.vote_average}</p>
                 <ReactStars

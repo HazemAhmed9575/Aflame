@@ -28,6 +28,7 @@ const initialState = {
   padges: 1,
   loding: false,
   error: false,
+  expandedOverview:{}
 };
 
 const seriesslice = createSlice({
@@ -49,6 +50,11 @@ const seriesslice = createSlice({
     },
     toMiniSeries: (state) => {
       state.padges = 1;
+    },
+    toggleOverview: (state, action) => {
+      const reviewId = action.payload;
+      // Toggle the visibility of the specific review
+      state.expandedOverview[reviewId] = !state.expandedOverview[reviewId];
     },
   },
   extraReducers: (builder) => {
@@ -73,4 +79,5 @@ export const {
   decremintPageSeries,
   toMaxSeries,
   toMiniSeries,
+  toggleOverview
 } = seriesslice.actions;

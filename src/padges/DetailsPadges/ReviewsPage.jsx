@@ -14,7 +14,7 @@ const ReviewsPage = () => {
 
   useEffect(() => {
     dispatch(getDetalis({ Subject, id }));
-    dispatch(gitSocial({ id }));
+    dispatch(gitSocial({ Subject,id }));
   }, [dispatch, id, Subject]);
 
   const releaseYear = moveDetails?.release_date
