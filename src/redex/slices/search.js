@@ -2,21 +2,19 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Async thunk for getting TV shows or movies based on the search query
-export const gitTVShows = createAsyncThunk(
-  "gitTVShows",
-  async ({ search, searchpath }, { rejectWithValue }) => {
-    console.log(searchpath);
+export const gitSearchData = createAsyncThunk(
+  "search/gitSearchData", // Provide a more descriptive type
+  async ({ search, searchCategore }, { rejectWithValue }) => {
+    console.log(searchCategore);
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/${
-          searchpath === "searchSeries" ? "tv" : "movie"
-        }`,
+        `https://api.themoviedb.org/3/search/${searchCategore}`,
         {
           params: {
-            query: search, // The argument passed from dispatch is `search`, which is renamed as `query` in the params
+            query: search,
             include_adult: "false",
             language: "en-US",
-            page: "1",
+            page: 1,
           },
           headers: {
             accept: "application/json",
@@ -46,15 +44,15 @@ const searchSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(gitTVShows.pending, (state) => {
+      .addCase(gitSearchData.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(gitTVShows.fulfilled, (state, action) => {
+      .addCase(gitSearchData.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(gitTVShows.rejected, (state, action) => {
+      .addCase(gitSearchData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
