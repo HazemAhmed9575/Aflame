@@ -31,9 +31,10 @@ function PartofCollection() {
       <div className="w-full flex flex-col gap-3 items-center font-bold">
         <h1 className="text-[#0DCAF0]">Includes :</h1>
         {dataCollection?.parts?.map((data, index) => (
-          <li key={index} className="text-white">
-            {data.title}
-          </li>
+          <div key={index} className="text-white">
+            <span className="text-[#0DCAF0]">{`${index+1} :`}<span className="text-white">{data.title},</span></span>
+            
+          </div>
         ))}
 
         <button

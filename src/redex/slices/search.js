@@ -5,7 +5,6 @@ import axios from "axios";
 export const gitSearchData = createAsyncThunk(
   "search/gitSearchData", // Provide a more descriptive type
   async ({ search, searchCategore }, { rejectWithValue }) => {
-    console.log(searchCategore);
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/${searchCategore}`,
