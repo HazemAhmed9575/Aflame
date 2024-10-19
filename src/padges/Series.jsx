@@ -53,7 +53,7 @@ if (error) {
 
     {seriestv?.map((data) => (
       <div key={data.id} className="flex flex-col max-w-sm sm:max-w-xs rounded overflow-hidden shadow-lg bg-[#212529] text-white w-full sm:w-auto">
-        <img className="w-full" src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.name} />
+        <img className="w-full" src={data.poster_path==null?"https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg":`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.name} />
         <div className="px-6 py-4">
           <p className="font-bold text-xl mb-2">TITLE: {data.name}</p>
           <p className="text-gray-400 text-base">OVERVIEW: {data.overview.slice(0,10)}...  </p>

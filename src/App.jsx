@@ -16,6 +16,7 @@ import ActorPage from "./padges/DetailsPadges/ActorPage";
 import VideosPage from "./padges/DetailsPadges/MediaPages/VideosPage";
 import BackDropsPage from "./padges/DetailsPadges/MediaPages/BackDropsPage";
 import Posters from "./padges/DetailsPadges/MediaPages/Posters";
+import Sarch from "./padges/Sarch";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/:Subject/:id/:name/cast" element={<CastPage />} />
         <Route path="/:Subject/:id/:name/reviews" element={<ReviewsPage />} />
         <Route path="/:Subject/:id/:name/season" element={<AllSeasons />} />
+        <Route path="/searchwith/:search/in/:searchCategore" element={<Sarch />} />
         <Route
           path="/:Subject/:id/:name/season/:seasonNumber"
           element={<SeasonDetails />}

@@ -20,6 +20,7 @@ import { socalLinksReducer } from "./slices/detailsSlices/actorSlices/socalLinks
 import { actorCredit } from "./slices/detailsSlices/actorSlices/actorCredits";
 import { kayWordes } from "./slices/detailsSlices/kayWords";
 import { search } from "./slices/search";
+import { searchpadges } from "./slices/sarchpadges";
 const store = configureStore({
   reducer: {
     contact,
@@ -43,6 +44,7 @@ const store = configureStore({
     actorCredit,
     kayWordes,
     search,
+    searchpadges
   },
 });
 
