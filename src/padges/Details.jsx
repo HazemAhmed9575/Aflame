@@ -3,7 +3,6 @@ import Move_SriesDetails from "../compont/DetailsComponant/Move_SriesDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import RightDetails from "../compont/DetailsComponant/RightDetails";
-import { getDetalis } from "../redex/slices/detailsSlices/detalis";
 import { getVideo } from "../redex/slices/detailsSlices/video";
 import { getCredits } from "../redex/slices/detailsSlices/cradits";
 import PartofCollection from "../compont/DetailsComponant/PartofCollection";
@@ -16,6 +15,7 @@ import Social from "../compont/DetailsComponant/Social";
 import { gitSocial } from "../redex/slices/detailsSlices/Social";
 import LastSeasonComponant from "../compont/DetailsComponant/LastSeasonComponant";
 import { gitKeywords } from "../redex/slices/detailsSlices/kayWords";
+import { getDetalis } from "./../redex/slices/detailsSlices/detalis";
 
 function Details() {
   const { Subject, id } = useParams();
@@ -23,7 +23,6 @@ function Details() {
 
   const dispatch = useDispatch();
   // belongs_to_collection.id
-
   //   useEffect get data
   // ((((((((((((((((((((()))))))))))))))))))))
   useEffect(() => {
@@ -34,7 +33,7 @@ function Details() {
     dispatch(gitSocial({ Subject, id }));
     dispatch(gitKeywords({ Subject, id }));
     dispatch(getMedia({ Subject, id }));
-  }, [dispatch, id]);
+  }, [dispatch, Subject, id]);
   // (((((((((((((((((((((())))))))))))))))))))))
 
   return (

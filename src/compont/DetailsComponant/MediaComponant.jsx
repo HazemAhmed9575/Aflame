@@ -38,8 +38,6 @@ function MediaComponant() {
       <Erorr />
     </div>;
   }
-  console.log(videoArranged);
-
   return (
     <div className="text-white w-full lg:w-3/4  flex flex-col gap-y-7 max-h-screen">
       <h1 className="text-[#0DCAF0] text-3xl font-bold">Media</h1>
