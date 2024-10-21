@@ -25,8 +25,8 @@ export const gitSocalLinks = createAsyncThunk(
 
 const initialState = {
   socialLinks: {},
-  Loding: false,
-  error: false
+  socialLinksLoding: false,
+  socialLinkserror: false
 };
 
 const socalLinksSlice = createSlice({
@@ -36,15 +36,15 @@ const socalLinksSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(gitSocalLinks.pending, (state) => {
-        state.Loding = true;
+        state.socialLinksLoding = true;
       })
       .addCase(gitSocalLinks.fulfilled, (state, action) => {
-        state.Loding = false;
+        state.socialLinksLoding = false;
         state.socialLinks = action.payload;
       })
       .addCase(gitSocalLinks.rejected, (state, action) => {
-        state.Loding = false;
-        state.error = action.payload;
+        state.socialLinksLoding = false;
+        state.socialLinkserror = action.payload;
       });
   }
 });
