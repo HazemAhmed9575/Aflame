@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getCollection } from "../../redex/slices/detailsSlices/collection";
 import Erorr from "./../Erorr";
 import Loding from "./../Loding";

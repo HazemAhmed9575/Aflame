@@ -6,11 +6,10 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Loding from "../Loding";
 import { FaArrowRightLong } from "react-icons/fa6";
-
 import Erorr from "../Erorr";
 
 function MediaComponant() {
@@ -26,7 +25,7 @@ function MediaComponant() {
   } = useSelector((state) => state.media);
   const [selectedCategory, setSelectedCategory] = useState("videoes");
 
-  const dispatch = useDispatch();
+  
   if (mediaErorr) {
     <div className="flex justify-center items-center w-full lg:w-3/4 ">
       <Erorr />
