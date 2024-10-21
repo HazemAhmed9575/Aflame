@@ -17,7 +17,6 @@ import { reviews } from "./slices/detailsSlices/Social";
 import { season } from "./slices/detailsSlices/seasons";
 import { actorDetails } from "./slices/detailsSlices/actorSlices/actorSlice";
 import { socalLinksReducer } from "./slices/detailsSlices/actorSlices/socalLinksSlice";
-import { actorCredit } from "./slices/detailsSlices/actorSlices/actorCredits";
 import { kayWordes } from "./slices/detailsSlices/kayWords";
 import { search } from "./slices/search";
 import { searchpadges } from "./slices/sarchpadges";
@@ -41,7 +40,6 @@ const store = configureStore({
     season,
     actorDetails,
     socalLinksReducer,
-    actorCredit,
     kayWordes,
     search,
     searchpadges

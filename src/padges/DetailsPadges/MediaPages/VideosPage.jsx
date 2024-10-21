@@ -16,7 +16,6 @@ const VideosPage = () => {
       ? moveDetails?.release_date?.slice(0, 4)
       : moveDetails?.first_air_date?.slice(0, 4);
   const dispatch = useDispatch();
-  console.log(videoArranged);
   useEffect(() => {
     dispatch(getVideo({ Subject, id }));
     dispatch(getDetalis({ Subject, id }));
@@ -28,7 +27,7 @@ const VideosPage = () => {
   };
   const videoCategories = Object.keys(videoArranged);
 
-  const initialCategory = videoCategories[0] || "No Language";
+  const initialCategory = videoCategories[0] || "Trailer";
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
   return (

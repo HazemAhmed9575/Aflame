@@ -22,7 +22,6 @@ function Series() {
   const handleToggleOverview = (index) => {
     dispatch(toggleOverview(index)); // Dispatch action to toggle visibility
   };
-console.log(seriestv);
   if (loding) {
     return (
       <div className="flex justify-center items-center w-full h-screen">
@@ -68,7 +67,10 @@ console.log(seriestv);
             <div className="px-6 py-4">
               <p className="font-bold text-xl mb-2">TITLE: {data.name}</p>
               <p className="text-gray-400 text-base">
-                OVERVIEW: {expandedOverview[data.id]?data.overview:`${data.overview.slice(0, 10)}...`}
+                OVERVIEW:{" "}
+                {expandedOverview[data.id]
+                  ? data.overview
+                  : `${data.overview.slice(0, 10)}...`}
               </p>
               {
                 <button

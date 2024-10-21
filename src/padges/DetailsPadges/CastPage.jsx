@@ -27,7 +27,6 @@ const CastPage = () => {
   const { moveDetails, detailsLoading, detailsError } = useSelector(
     (state) => state.details
   );
-  console.log(crew);
 
   const { Subject, id } = useParams();
   const dispatch = useDispatch();

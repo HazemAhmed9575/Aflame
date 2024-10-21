@@ -22,7 +22,6 @@ const BackDropsPage = () => {
   const backdropsCategories = Object.keys(backdropsMidiaArranged);
   const initialCategory = backdropsCategories[0] || "No Language";
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  console.log(backdropsCategories[0]); // This will log the selected category or null if no categories exist
 
   const container = useRef(null);
 

@@ -41,30 +41,14 @@ const initialState = {
   backdropsMidiaArranged: {},
   mediaLoding: false,
   mediaErorr: false,
-  textVideoMediaComp: true,
-  textBackdrobMediaComp: false,
-  textPostersMediaComp: false,
+
 };
 
 const mediaSlice = createSlice({
   name: "mediaSlice",
   initialState,
   reducers: {
-    textVideo: (state) => {
-      state.textVideoMediaComp = true;
-      state.textBackdrobMediaComp = false;
-      state.textPostersMediaComp = false;
-    },
-    textBackdrob: (state) => {
-      state.textVideoMediaComp = false;
-      state.textBackdrobMediaComp = true;
-      state.textPostersMediaComp = false;
-    },
-    textPosters: (state) => {
-      state.textVideoMediaComp = false;
-      state.textBackdrobMediaComp = false;
-      state.textPostersMediaComp = true;
-    },
+  
   },
   extraReducers: (builder) => {
     builder
@@ -106,4 +90,3 @@ const mediaSlice = createSlice({
 });
 
 export const media = mediaSlice.reducer;
-export const { textVideo, textBackdrob, textPosters } = mediaSlice.actions;

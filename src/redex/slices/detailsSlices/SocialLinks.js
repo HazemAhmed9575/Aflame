@@ -4,11 +4,11 @@ import axios from "axios";
 // Define the async thunk to fetch external IDs
 export const getExternalIds = createAsyncThunk(
   "/getExternalIds",
-  async ({ id }, thunkAPI) => {
+  async ({ Subject,id }, thunkAPI) => {
     try {
       const { data } = await axios({
         method: "GET",
-        url: `https://api.themoviedb.org/3/movie/${id}/external_ids`,
+        url: `https://api.themoviedb.org/3/${Subject=="movie"?"movie":"tv"}/${id}/external_ids`,
         headers: {
           accept: "application/json",
           Authorization:
