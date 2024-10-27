@@ -24,7 +24,6 @@ function NavBar() {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.search);
   const navigate = useNavigate();
-
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -40,28 +39,32 @@ function NavBar() {
           as={NavLink}
           to={"/"}
           variant="small"
-          className="p-1 font-medium text-base  hover:text-gray-400">
+          className="p-1 font-medium text-base  hover:text-gray-400"
+        >
           Home
         </Typography>
         <Typography
           as={NavLink}
           to={"/move"}
           variant="small"
-          className="p-1 font-medium text-base  hover:text-gray-400 ">
+          className="p-1 font-medium text-base  hover:text-gray-400 "
+        >
           Movies
         </Typography>
         <Typography
           as={NavLink}
           to={"/series"}
           variant="small"
-          className="p-1 font-medium text-base  hover:text-gray-400 ">
+          className="p-1 font-medium text-base  hover:text-gray-400 "
+        >
           Series
         </Typography>
         <Typography
           as={NavLink}
           to={"/contacus"}
           variant="small"
-          className="p-1 font-medium text-base  hover:text-gray-400 ">
+          className="p-1 font-medium text-base  hover:text-gray-400 "
+        >
           Contact Us
         </Typography>
       </div>
@@ -84,39 +87,41 @@ function NavBar() {
           />
           {data.length > 0 && search !== "" && (
             <Card className="w-96 absolute top-full left-0  bg-[#212529] overflow-y-scroll max-h-80  ">
-              <List>
-                {data.map((data, index) => (
-                  <ListItem
-                    onClick={() =>
-                      navigate(
-                        searchCategore == "movie"
-                          ? `/movie/${data.id}/${data.title}`
-                          : `/tv/${data.id}/${data.name}`
-                      )
-                    }
-                    className="border border-[#0DCAF0]"
-                    key={index}>
-                    <ListItemPrefix>
-                      <Avatar
-                        variant="circular"
-                        alt="candice"
-                        src={
-                          data.poster_path == null
-                            ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
-                            : `https://image.tmdb.org/t/p/w500${data.poster_path}`
-                        }
-                      />
-                    </ListItemPrefix>
-                    <div>
-                      <Typography variant="h6" color="white">
-                        {searchCategore == "movie"
-                          ? data.original_title
-                          : data.name}
-                      </Typography>
-                    </div>
-                  </ListItem>
-                ))}
-              </List>
+                 <List>
+                  {data.map((data, index) => (
+                    <ListItem
+                      onClick={() => {
+                        navigate(
+                          searchCategore === "movie"
+                            ? `/movie/${data.id}/${data.title}`
+                            : `/tv/${data.id}/${data.name}`
+                        );
+                        setSearch(""); // Clear the search input
+                      }}
+                      className="border border-[#0DCAF0]"
+                      key={index}
+                    >
+                      <ListItemPrefix>
+                        <Avatar
+                          variant="circular"
+                          alt="candice"
+                          src={
+                            data.poster_path == null
+                              ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+                              : `https://image.tmdb.org/t/p/w500${data.poster_path}`
+                          }
+                        />
+                      </ListItemPrefix>
+                      <div>
+                        <Typography variant="h6" color="white">
+                          {searchCategore === "movie"
+                            ? data.original_title
+                            : data.name}
+                        </Typography>
+                      </div>
+                    </ListItem>
+                  ))}
+                </List>
             </Card>
           )}
         </div>
@@ -127,7 +132,8 @@ function NavBar() {
           }}
           className={`py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white ${
             search == "" && "pointer-events-none"
-          } ${data.length == 0 && "pointer-events-none"}   `}>
+          } ${data.length == 0 && "pointer-events-none"}   `}
+        >
           Search
         </button>
         <button
@@ -144,7 +150,8 @@ function NavBar() {
             searchpath == "serachSeries"
               ? "text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]"
               : "text-blue-700 border-2 rounded-md border-blue-700 hover:bg-blue-700 hover:text-white"
-          }`}>
+          }`}
+        >
           {searchpath}
         </button>
         <button className="py-1.5 px-3 text-base font-bold text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black ">
@@ -162,7 +169,8 @@ function NavBar() {
           <Link
             to="/"
             href="#"
-            className="font-medium  text-white lg:w-1/5 text-center text-xl">
+            className="font-medium  text-white lg:w-1/5 text-center text-xl"
+          >
             Redux Movies
           </Link>
 
@@ -173,7 +181,8 @@ function NavBar() {
         <IconButton
           variant="text"
           className="lg:hidden text-gray-500  border-2 border-gray-700  "
-          onClick={() => setOpenNav(!openNav)}>
+          onClick={() => setOpenNav(!openNav)}
+        >
           {openNav ? (
             <XMarkIcon className="h-6 w-6" />
           ) : (
@@ -184,7 +193,8 @@ function NavBar() {
       </div>
       <Collapse
         className={`${openNav ? "overflow-visible" : "overflow-hidden"}`}
-        open={openNav}>
+        open={openNav}
+      >
         <div className="container mx-auto">
           {navList}
           <div className=" relative flex flex-col gap-x-2 sm:flex-row sm:items-center">
@@ -209,15 +219,17 @@ function NavBar() {
                 <List>
                   {data.map((data, index) => (
                     <ListItem
-                      onClick={() =>
+                      onClick={() => {
                         navigate(
-                          searchCategore == "movie"
+                          searchCategore === "movie"
                             ? `/movie/${data.id}/${data.title}`
                             : `/tv/${data.id}/${data.name}`
-                        )
-                      }
+                        );
+                        setSearch(""); // Clear the search input
+                      }}
                       className="border border-[#0DCAF0]"
-                      key={index}>
+                      key={index}
+                    >
                       <ListItemPrefix>
                         <Avatar
                           variant="circular"
@@ -231,7 +243,7 @@ function NavBar() {
                       </ListItemPrefix>
                       <div>
                         <Typography variant="h6" color="white">
-                          {searchCategore == "movie"
+                          {searchCategore === "movie"
                             ? data.original_title
                             : data.name}
                         </Typography>
@@ -244,12 +256,13 @@ function NavBar() {
 
             <button
               onClick={() => {
-                navigate(`/searchwith/${search}/in/${searchCategore}`),
-                  setSearch("");
+                navigate(`/searchwith/${search}/in/${searchCategore}`);
+                setSearch("");
               }}
               className={`py-1.5 px-3 text-base  border-2 rounded-md  text-[#198754] border-[#198754] hover:bg-[#198754] hover:text-white ${
                 search == "" && "pointer-events-none"
-              }`}>
+              }`}
+            >
               Search
             </button>
             <button
@@ -266,7 +279,8 @@ function NavBar() {
                 searchpath == "serachSeries"
                   ? "text-[#dc3545] border-[#dc3545] hover:text-white hover:bg-[#dc3545]"
                   : "text-blue-700 border-2 rounded-md border-blue-700 hover:bg-blue-700 hover:text-white"
-              }`}>
+              }`}
+            >
               {searchpath}
             </button>
             <button className="py-1.5 px-3 text-base font-bold text-[#0dcaf0] border-2 rounded-md border-[#0dcaf0] hover:bg-[#0dcaf0] hover:text-black ">
