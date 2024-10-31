@@ -41,9 +41,9 @@ export const sendContact = createAsyncThunk(
     }
     try {
       const data = {
-        service_id: "service_19kvycs",
-        template_id: "template_p5snoux",
-        user_id: "tR8MG5xt9Jm2tcqrS",
+        service_id: "service_0z22nzp",
+        template_id: "template_qkh5fsj",
+        user_id: "HtLpd-4BjARfGKd7a",
         template_params: {
           to_name: "aflame",
           from_Email: email,
